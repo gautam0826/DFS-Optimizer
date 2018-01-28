@@ -1,27 +1,41 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 import webbrowser
+import settings
+from gui import *
 
-# File
+#===================
+# Top Bar Functions
+#===================
+
+# File =============
+
+# Save Settings
 def Save():
 	print("Save")
 
+# Load Settings
 def Load():
 	print("Load")
 
 def Options():
 	print("Options")
 
-# CSV
+# CSV ==============
 def Import():
 	name = filedialog.askopenfilename()
 	print(name)
+	if name != '':
+		settings.app.imported = True
 
 def Export():
-	name = filedialog.askopenfilename()
-	print("Export File")
+	if settings.app.imported == True:
+		print("Export File")
+	else:
+		messagebox.showinfo('Note', 'You must import a file before exporting!')
 
-# Help
+# Help =============
 def GitHub():
 	print("GitHub")
 	webbrowser.open('https://github.com/gautam0826/DFS-Optimizer') # Links to Git Repo
@@ -53,3 +67,24 @@ def About():
 	text2.pack()
 	
 	about.mainloop()
+
+#===================
+#   GUI Functions
+#===================
+
+# Remove Setting
+# Small button located to the left of each optional setting
+# to remove the constraint
+def Remove(event):
+	print('remove ' + repr(id))
+	event.widget.grid_forget()
+
+# Add Setting
+def Add():
+	print('add')
+
+def Optimize():
+	if settings.app.imported == True:
+		print('optimize')
+	else:
+		messagebox.showinfo('Note', 'You must import a file before optimizing a lineup!')

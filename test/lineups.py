@@ -3,6 +3,7 @@ import numpy as np
 import math
 import pulp
 from pulp import *
+import os
 
 #basic constraints (make global variables or read from text file) and file locations
 num_lineups = 20
@@ -12,6 +13,12 @@ cost_column = 'cost'
 projections_column = 'Final Model'
 loc_projections = 'screened current predictions.csv' #Input file location
 loc_lineups = 'temp_output.csv' #TODO: create temp folder to place this in
+
+#creates a temp folder in the same directory
+current_directory = os.getcwd()
+final_directory = os.path.join(current_directory, r'temp_folder')
+if not os.path.exists(final_directory):
+   os.makedirs(final_directory)
 
 #read csv using pandas to store data
 df = pd.read_csv(loc_projections, sep=',')
@@ -69,4 +76,5 @@ df.sort_values(by=projections_column, ascending=False, inplace=True)
 df.sort_values(by=['lineup_' + str(i) for i in range(1, num_lineups+1)], ascending=False, inplace=True)
 
 #write to csv
-df.to_csv(loc_lineups, sep=',', index=False)
+path = r'temp_folder'
+df.to_csv(os.path.join(path, loc_lineups), sep=',', index=False)

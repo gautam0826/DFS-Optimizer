@@ -76,4 +76,5 @@ df.sort_values(by=projections_column, ascending=False, inplace=True)
 df.sort_values(by=['lineup_' + str(i) for i in range(1, num_lineups+1)], ascending=False, inplace=True)
 
 #write to csv
+path = r'temp_folder'
 df.to_csv(os.path.join(path, loc_lineups), sep=',', index=False)

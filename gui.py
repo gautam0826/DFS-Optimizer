@@ -75,10 +75,17 @@ optimizeBtn.grid(row=15, rowspan=2, column=19, columnspan=3)
 text1 = 'Number of Lineups: ' + repr(lineups)
 setting1 = Label(top, text=text1)
 setting1.grid(row=1, columnspan=10, sticky=W)
+##user input
+lineupNumInput = Entry(top)
+lineupNumInput.grid(row=1, column=2, sticky=W) 
 
 text2 = 'Number of Players: ' + repr(players)
 setting2 = Label(top, text=text2)
 setting2.grid(row=2, columnspan=10, sticky=W)
+##user input
+playerNumInput = Entry(top)
+playerNumInput.grid(row=2, column=2,sticky=W)
+#playerNumInput.get() ##function to retrieve number of players
 
 text3 = 'Max Cost: ' + repr(maxCost)
 setting3 = Label(top, text=text3)
@@ -100,3 +107,7 @@ for i in range(19,36):
 	bot.grid_rowconfigure(i, weight=1)
 
 settings.app.root.mainloop()
+
+##writing to text file
+##-------------------------------------------------------------------------
+

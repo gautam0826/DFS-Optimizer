@@ -1,6 +1,14 @@
-import tkinter as tk
-from tkinter import *
-from tkinter import messagebox
+import sys
+# For running Python 3.X
+if sys.version_info >= (3,0):
+	import tkinter as tk
+	from tkinter import *
+	from tkinter import messagebox
+# For running Python 2.X
+else:
+	import Tkinter as tk
+	from Tkinter import *
+	import tkMessageBox
 import webbrowser
 import settings
 from gui import *

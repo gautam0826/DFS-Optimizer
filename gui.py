@@ -1,7 +1,16 @@
-import tkinter as tk
-from tkinter import *
-from tkinter import messagebox
-from tkinter.filedialog import askopenfilename
+import sys
+# For running Python 3.X
+if sys.version_info >= (3,0):
+	import tkinter as tk
+	from tkinter import *
+	from tkinter import messagebox
+	from tkinter.filedialog import askopenfilename
+# For running Python 2.X
+else:
+	import Tkinter as tk
+	from Tkinter import *
+	import tkMessageBox
+	from tkFileDialog import askopenfilename
 import settings
 from menu import *
 
@@ -41,7 +50,7 @@ menu.add_cascade(label="Help", menu=helpmenu)
 helpmenu.add_command(label="GitHub", command=GitHub)
 helpmenu.add_command(label="About", command=About)
 
-frame = Frame(settings.app.root, width=settings.app.w, height=settings.app.h, background='red')
+frame = Frame(settings.app.root, width=settings.app.w, height=settings.app.h, background='white')
 frame.pack(fill=BOTH)
 frame.pack_propagate(False) # Stop frame from resizing to widgets
 

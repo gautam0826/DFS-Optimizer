@@ -1,19 +1,21 @@
-import sys
-# For running Python 3.X
-if sys.version_info >= (3,0):
-	import tkinter as tk
-	from tkinter import *
-	from tkinter import messagebox
-	from tkinter.filedialog import askopenfilename
-# For running Python 2.X
-else:
-	import Tkinter as tk
-	from Tkinter import *
-	import tkMessageBox
-	from tkFileDialog import askopenfilename
+import tkinter as tk
+from tkinter import *
+from tkinter import messagebox
+from tkinter.filedialog import askopenfilename
 import settings
 from menu import *
+#===========
+def enterPressed(event,var):
+	with open('configurations.txt', 'a') as configurations:
+		configurations.write('1 ' + str(event.get()+ '\n'))
+	var = event.get()
+	#configurations.write('2 ' + str(playerNumEntry))
+	#print(event.widget.get())
+	#return (event.widget.get())
+	#var = event.get()
 
+
+#=========
 # Starting variables for fixed settings
 lineups, players, maxCost = 0, 0, 0
 
@@ -50,7 +52,7 @@ menu.add_cascade(label="Help", menu=helpmenu)
 helpmenu.add_command(label="GitHub", command=GitHub)
 helpmenu.add_command(label="About", command=About)
 
-frame = Frame(settings.app.root, width=settings.app.w, height=settings.app.h, background='white')
+frame = Frame(settings.app.root, width=settings.app.w, height=settings.app.h, background='red')
 frame.pack(fill=BOTH)
 frame.pack_propagate(False) # Stop frame from resizing to widgets
 
@@ -87,6 +89,7 @@ setting1.grid(row=1, columnspan=10, sticky=W)
 ##user input
 lineupNumInput = Entry(top)
 lineupNumInput.grid(row=1, column=2, sticky=W) 
+lineupNumInput.bind('<Return>',(lambda event: enterPressed(lineupNumInput,lineups)))
 
 text2 = 'Number of Players: ' + repr(players)
 setting2 = Label(top, text=text2)
@@ -94,11 +97,30 @@ setting2.grid(row=2, columnspan=10, sticky=W)
 ##user input
 playerNumInput = Entry(top)
 playerNumInput.grid(row=2, column=2,sticky=W)
-#playerNumInput.get() ##function to retrieve number of players
+playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput)))
+#playerNumEntry =''
+#playerNumInput.bind('<Return>', enterPressed(playerNumInput, playerNumEntry ))
+#playerNumInput.pack()
+#playerNumInput.focus_set()
+#playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput,playerNumEntry)))
+
+#enterPressed(entered, var)
+#playerNumEntry = playerNumInput.get() ##function to retrieve number of players
 
 text3 = 'Max Cost: ' + repr(maxCost)
 setting3 = Label(top, text=text3)
 setting3.grid(row=3, columnspan=10, sticky=W)
+
+#================
+# Drop Down List
+#================
+f = open("test.txt","r") #change name of text file
+lst = f.readline().split()
+f.close()
+var = tk.StringVar() 
+drop = tk.OptionMenu(top ,var,*lst)
+drop.config(width= 20)
+drop.grid()
 
 #=============
 # Split Frame
@@ -115,8 +137,20 @@ bot.grid_propagate(False) # Stop frame from resizing to widgets
 for i in range(19,36):
 	bot.grid_rowconfigure(i, weight=1)
 
-settings.app.root.mainloop()
-
 ##writing to text file
 ##-------------------------------------------------------------------------
+#f = open('configurations.txt','w')
+#with open('configurations.txt', 'w') as configurations:
+	#configurations.write('1 ' + str(lineupNumEntry))
+	#configurations.write('2 ' + str(playerNumEntry))
+#f.write('3 ' + projections_column)
+#f.write('4 ' + str(budget))
+#f.write('5 ' + budget_column)
+#f.write('6 ' + input_csv_location)
+#f.close()
+
+
+settings.app.root.mainloop()
+
+
 

@@ -15,7 +15,6 @@ import settings
 from menu import *
 
 # Starting variables for fixed settings
-lineups, players, maxCost = 0, 0, 0
 
 #=============
 #    Menu
@@ -114,6 +113,13 @@ bot.grid(row=19)
 bot.grid_propagate(False) # Stop frame from resizing to widgets
 for i in range(19,36):
 	bot.grid_rowconfigure(i, weight=1)
+
+bottom = Frame(bot, width=settings.app.w, height=settings.app.h/2, background='white')
+bottom.pack()
+bottom.pack_propagate(False)
+
+scrollbar = Scrollbar(bottom)
+scrollbar.pack(side=RIGHT, fill=Y)
 
 settings.app.root.mainloop()
 

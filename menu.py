@@ -5,6 +5,8 @@ import webbrowser
 import settings
 import subprocess
 import gui
+=======
+from globalVars import *
 from gui import *
 import csv
 #===================
@@ -30,6 +32,12 @@ def Import():
     print(name)
     if name != '':
         settings.app.imported = True
+=======
+	fileName = filedialog.askopenfilename()
+	print(fileName)
+	if fileName != '':
+		settings.app.imported = True
+
 def Export():
     if settings.app.imported == True:
         print("Export File")

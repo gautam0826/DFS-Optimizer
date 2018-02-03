@@ -131,7 +131,7 @@ drop.grid()
 if fileName == '':
 	lst =[' ']
 else:
-	with open("eventInfo.csv",newline='') as csvfile:#change name of text file
+	with open(fileName,newline='') as csvfile:#change name of text file
 		headings = csv.reader(csvfile)
 		lst=next(headings)
 #lst = f.readline().split()

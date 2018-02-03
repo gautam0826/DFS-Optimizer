@@ -89,7 +89,7 @@ def Optimize():
         print('optimize')
         #Run the optomizer using Popen
         subprocess.Popen('python lineups.py').wait()
-        #display the results from the csv file using labels in tkinter. currently not optomized. Need to set up for non-windows defices
+        #display the results from the csv file using labels in tkinter. currently not optimized. Need to set up for non-windows devices
         with open("temp_folder/temp_output.csv", newline = "") as file:
             reader = csv.reader(file)
             r = 0

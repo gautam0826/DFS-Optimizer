@@ -11,6 +11,7 @@ else:
 	import tkMessageBox
 import webbrowser
 import settings
+from globalVars import *
 from gui import *
 
 #===================
@@ -32,9 +33,9 @@ def Options():
 
 # CSV ==============
 def Import():
-	name = filedialog.askopenfilename()
-	print(name)
-	if name != '':
+	fileName = filedialog.askopenfilename()
+	print(fileName)
+	if fileName != '':
 		settings.app.imported = True
 
 def Export():

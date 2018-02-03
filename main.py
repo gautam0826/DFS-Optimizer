@@ -7,4 +7,3 @@ import gui
 #from menu import *
 import menu
 
-settings.init()

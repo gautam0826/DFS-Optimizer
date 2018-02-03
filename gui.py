@@ -14,31 +14,7 @@ else:
 import settings
 from menu import *
 
-#===========
-def enterPressed(event,var):
-	# with open('configurations.txt', 'a') as configurations:
-	# 	configurations.write('1 ' + str(event.get()+ '\n'))
-	# var = event.get()
-	if event == 'lineupNumInput':
-		settings.app.lineups = var
-		#setting1.grid(row=1, columnspan=10, sticky=W)
-	elif event == 'playerNumInput':
-		settings.app.players = var
-		#setting2.grid(row=2, columnspan=10, sticky=W)
-	elif event == 'maxCostNumInput':
-		settings.app.maxCost = var
-		#setting3.grid(row=3, columnspan=10, sticky=W)
-	else:
-		print('Undefined enterPressed variable: ' + repr(var) + '\n')
-		print(event)
-	
-	#configurations.write('2 ' + str(playerNumEntry))
-	#print(event.widget.get())
-	#return (event.widget.get())
-	#var = event.get()
-
-
-#=========
+# Starting variables for fixed settings
 
 #=============
 #    Menu
@@ -88,9 +64,7 @@ for i in range(0,17):
 for j in range(0,49):
 	top.grid_columnconfigure(j, weight=1)
 
-#================
 # Top Widgets
-#================
 saveSetting = Button(top, text='Save Settings', command=Save)
 saveSetting.grid(row=0, column=19)
 loadSetting = Button(top, text='Load Settings', command=Load)
@@ -106,40 +80,24 @@ exportBtn.grid(row=16, column=1)
 optimizeBtn = Button(top, text='Optimize', height=2, width=20, command=Optimize)
 optimizeBtn.grid(row=15, rowspan=2, column=19, columnspan=3)
 
-# SETTING 1
-text1 = 'Number of Lineups: ' + repr(settings.app.lineups)
+text1 = 'Number of Lineups: ' + repr(lineups)
 setting1 = Label(top, text=text1)
 setting1.grid(row=1, columnspan=10, sticky=W)
 ##user input
-lineupNumInput = Entry(top, textvariable=settings.app.lineups)
-lineupNumInput.grid(row=1, column=2, sticky=W)
-lineupNumInput.bind('<Return>',(lambda event: enterPressed('lineupNumInput',settings.app.lineups))) 
+lineupNumInput = Entry(top)
+lineupNumInput.grid(row=1, column=2, sticky=W) 
 
-# SETTING 2
-text2 = 'Number of Players: ' + repr(settings.app.players)
+text2 = 'Number of Players: ' + repr(players)
 setting2 = Label(top, text=text2)
 setting2.grid(row=2, columnspan=10, sticky=W)
 ##user input
-playerNumInput = Entry(top, textvariable=settings.app.players)
+playerNumInput = Entry(top)
 playerNumInput.grid(row=2, column=2,sticky=W)
-playerNumInput.bind('<Return>',(lambda event: enterPressed('playerNumInput',settings.app.players)))
 #playerNumInput.get() ##function to retrieve number of players
 
-# SETTING 3
-text3 = 'Max Cost: ' + repr(settings.app.maxCost)
+text3 = 'Max Cost: ' + repr(maxCost)
 setting3 = Label(top, text=text3)
 setting3.grid(row=3, columnspan=10, sticky=W)
-
-#================
-# Drop Down List
-#================
-f = open("test.txt","r") #change name of text file
-lst = f.readline().split()
-f.close()
-var = tk.StringVar() 
-drop = tk.OptionMenu(top ,var,*lst)
-drop.config(width= 20)
-drop.grid()
 
 #=============
 # Split Frame

@@ -43,8 +43,4 @@ class DFS():
 		# Disable Resize
 		#self.root.resizable(False, False)
 
-		self.lineups = 0;
-		self.players = 0;
-		self.maxCost = 0;
-
 app=DFS()

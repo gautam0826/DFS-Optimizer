@@ -6,7 +6,6 @@ from pulp import *
 
 #basic constraints/file locations
 loc_lineups = 'temp_output.csv'
-loc_projections = 'screened current predictions.csv'
 with open('configurations.txt') as f:
     content = f.readlines()
 f.close()
@@ -24,7 +23,7 @@ for line in content:
 	elif line[0] is '5':
 		budget_column = line[1]
 	elif line[0] is '6':
-		input_csv_location = line[1]
+		loc_projections = line[1]
 
 #creates a temp folder in the same directory
 current_directory = os.getcwd()

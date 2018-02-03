@@ -6,6 +6,7 @@ from pulp import *
 
 #basic constraints/file locations
 loc_lineups = 'temp_output.csv'
+loc_projections = 'screened current predictions.csv'
 with open('configurations.txt') as f:
     content = f.readlines()
 f.close()
@@ -50,7 +51,7 @@ for row_num, row in df.iterrows():
 	#update constraints with player's projections and cost
 	objective_function += row[projections_column] * variable
 	num_players_constraint += variable
-	cost_constraint += row[cost_column] * variable
+	cost_constraint += row[budget_column] * variable
 
 #add objective function(projected points), the number of players chosen constraint, cost constraint, position constraints, and team constraints to problem
 prob += objective_function

@@ -12,18 +12,28 @@ else:
 	import tkMessageBox
 	from tkFileDialog import askopenfilename
 import settings
+import os
 from globalVars import *
 import csv
 from menu import *
 
 # Starting variables for fixed settings
-lineups, players, maxCost = 0, 0, 0
+#lineups, players, maxCost = 0, 0, 0
+lineups = StringVar()
+players = StringVar()
+maxCost = StringVar()
+lineups.set('0')
+players.set('0')
+maxCost.set('0')
 
 #===========
-def enterPressed(event,var):
+def enterPressed(event,variable):
+	print(variable.get())
 	with open('configurations.txt', 'a') as configurations:
 		configurations.write('1 ' + str(event.get()+ '\n'))
-	var = event.get()
+	variable.set(event.get())
+	print(variable.get())
+	
 
 #=============
 #    Menu
@@ -73,6 +83,20 @@ for i in range(0,17):
 for j in range(0,49):
 	top.grid_columnconfigure(j, weight=1)
 
+#================
+# Drop Down List
+#================
+#First Drop
+lst = ['Select One']
+var = StringVar() 
+var.set(lst[0])
+drop = OptionMenu(top ,var,*lst)
+drop.config(width= 20)
+drop.grid(row = 18)
+
+
+
+
 # Top Widgets
 saveSetting = Button(top, text='Save Settings', command=Save)
 saveSetting.grid(row=0, column=19)
@@ -89,57 +113,38 @@ exportBtn.grid(row=16, column=1)
 optimizeBtn = Button(top, text='Optimize', height=2, width=20, command=Optimize)
 optimizeBtn.grid(row=15, rowspan=2, column=19, columnspan=3)
 
-text1 = 'Number of Lineups: ' + repr(lineups)
-setting1 = Label(top, text=text1)
-setting1.grid(row=1, columnspan=10, sticky=W)
+
+setting1 = Label(top, text='Number of Lineups:')
+setting1.grid(row=1, sticky=W)
+settingLineupsNum = Label(top,textvariable=lineups)
+settingLineupsNum.grid(row=1,column = 2, sticky=W)
 ##user input
 lineupNumInput = Entry(top)
-lineupNumInput.grid(row=1, column=2, sticky=W)
+lineupNumInput.grid(row=1, column=3, sticky=W)
 lineupNumInput.bind('<Return>',(lambda event: enterPressed(lineupNumInput,lineups)))
 
-text2 = 'Number of Players: ' + repr(players)
-setting2 = Label(top, text=text2)
-setting2.grid(row=2, columnspan=10, sticky=W)
+
+setting2 = Label(top, text='Number of Players: ')
+setting2.grid(row=2, sticky=W)
+displayPlayersNum = Label(top,textvariable=players)
+displayPlayersNum.grid(row=2,column = 2, sticky=W)
+
 ##user input
 playerNumInput = Entry(top)
-playerNumInput.grid(row=2, column=2,sticky=W)
-playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput)))
-#playerNumInput.get() ##function to retrieve number of players
+playerNumInput.grid(row=2, column=3,sticky=W)
+playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput,players)))
 
-text3 = 'Max Cost: ' + repr(maxCost)
-setting3 = Label(top, text=text3)
-setting3.grid(row=3, columnspan=10, sticky=W)
 
-#================
-# Drop Down List
-#================
-#First Drop
+setting3 = Label(top, text='Max Cost: ')
+setting3.grid(row=3, sticky=W)
+displayCostNum = Label(top,textvariable=maxCost)
+displayCostNum.grid(row=3,column = 2, sticky=W)
 
-if fileName == '':
-	lst =[' ']
-else:
-	with open(fileName,newline='') as csvfile:#change name of text file
-		headings = csv.reader(csvfile)
-		lst=next(headings)
-#lst = f.readline().split()
-#f.close()
-var = tk.StringVar() 
-drop = tk.OptionMenu(top ,var,*lst)
-drop.config(width= 20)
-drop.grid()
+costNumInput = Entry(top)
+costNumInput.grid(row=3, column=3,sticky=W)
+costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost)))
 
-if fileName == '':
-	lst =[' ']
-else:
-	with open(fileName,newline='') as csvfile:#change name of text file
-		headings = csv.reader(csvfile)
-		lst=next(headings)
-#lst = f.readline().split()
-#f.close()
-var = tk.StringVar() 
-drop = tk.OptionMenu(top ,var,*lst)
-drop.config(width= 20)
-drop.grid()
+
 
 #=============
 # Split Frame

@@ -23,7 +23,7 @@ for line in content:
 	elif line[0] is '5':
 		budget_column = line[1]
 	elif line[0] is '6':
-		loc_projections = line[1]
+		input_csv_location = line[1]
 
 #creates a temp folder in the same directory
 current_directory = os.getcwd()
@@ -50,7 +50,7 @@ for row_num, row in df.iterrows():
 	#update constraints with player's projections and cost
 	objective_function += row[projections_column] * variable
 	num_players_constraint += variable
-	cost_constraint += row[budget_column] * variable
+	cost_constraint += row[cost_column] * variable
 
 #add objective function(projected points), the number of players chosen constraint, cost constraint, position constraints, and team constraints to problem
 prob += objective_function

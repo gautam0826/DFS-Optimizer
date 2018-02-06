@@ -11,11 +11,11 @@ else:
 	import tkMessageBox
 import webbrowser
 import settings
-from globalVars import *
+from tkinter import filedialog
+import globalVars
 from gui import *
-import subprocess
 import gui
-import csv
+
 #===================
 # Top Bar Functions
 #===================
@@ -36,9 +36,30 @@ def Options():
 # CSV ==============
 def Import():
 	fileName = filedialog.askopenfilename()
-	print(fileName)
+	fileChosen = os.path.basename(fileName)
+
 	if fileName != '':
 		settings.app.imported = True
+	headers = []
+	if fileChosen == '':
+		globalVars.lst = ['Select One']
+		print(fileChosen + 'empty')
+	else:
+	#lst = ['Select One'])
+		gui.drop.children['menu'].delete(0, 'end')
+		print(fileChosen + ' work')
+		with open(fileChosen,newline='') as csvfile:#change name of text file
+			headings = csv.reader(csvfile)
+			headers = next(headings)
+		for h in headers:
+			globalVars.lst.append(h)
+			gui.drop.children['menu'].add_command(label=h,command=lambda heading=h: gui.var.set(heading))
+		
+	#drop = tk.OptionMenu(top ,var,*lst)
+	#for c in lst:
+		#drop.children['menu'].add_command(label=c), command=lambda 
+#lst = f.readline().split()
+#f.close()
 
 def Export():
 	if settings.app.imported == True:
@@ -95,21 +116,7 @@ def Add():
 	print('add')
 
 def Optimize():
-    if settings.app.imported == True:
-        print('optimize')
-        #Run the optomizer using Popen
-        subprocess.Popen('python lineups.py').wait()
-        #display the results from the csv file using labels in tkinter. currently not optimized. Need to set up for non-windows devices
-        with open("temp_folder/temp_output.csv", newline = "") as file:
-            reader = csv.reader(file)
-            r = 0
-            for col in reader:
-                c = 0
-                for row in col:
-                    label = tk.Label(gui.bot, width = 10, height = 2, \
-                                          text = row, relief = tk.RIDGE)
-                    label.grid(row = r, column = c)
-                    c += 1
-                r += 1
-    else:
-        messagebox.showinfo('Note', 'You must import a file before optimizing a lineup!')
+	if settings.app.imported == True:
+		print('optimize')
+	else:
+		messagebox.showinfo('Note', 'You must import a file before optimizing a lineup!')

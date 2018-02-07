@@ -1,1 +1,3 @@
 fileName = ''
+
+lst = []

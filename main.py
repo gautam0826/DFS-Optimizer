@@ -7,3 +7,7 @@ import gui
 #from menu import *
 import menu
 
+
+import globalVars
+
+settings.init()

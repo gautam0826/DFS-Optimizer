@@ -50,7 +50,7 @@ for row_num, row in df.iterrows():
 	#update constraints with player's projections and cost
 	objective_function += row[projections_column] * variable
 	num_players_constraint += variable
-	cost_constraint += row[cost_column] * variable
+	cost_constraint += row[budget_column] * variable
 
 #add objective function(projected points), the number of players chosen constraint, cost constraint, position constraints, and team constraints to problem
 prob += objective_function

@@ -40,8 +40,6 @@ def Import():
 
 	if fileName != '':
 		settings.app.imported = True
-		with open('configurations.txt', 'a') as configurations:
-			configurations.write('6 ' + fileName + '\n')
 	headers = []
 	if fileChosen == '':
 		globalVars.lst = ['Select One']
@@ -119,6 +117,9 @@ def Add():
 
 def Optimize():
 	if settings.app.imported == True:
+		gui.bot.grid(row=19)
+		gui.bottom.pack()
+		gui.scrollbar.pack(side=RIGHT, fill=Y)
 		print('optimize')
 	else:
 		messagebox.showinfo('Note', 'You must import a file before optimizing a lineup!')

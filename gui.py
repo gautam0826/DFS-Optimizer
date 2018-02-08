@@ -27,10 +27,10 @@ players.set('0')
 maxCost.set('0')
 
 #===========
-def enterPressed(event,variable):
+def enterPressed(event,variable,identifier):
 	print(variable.get())
 	with open('configurations.txt', 'a') as configurations:
-		configurations.write('1 ' + str(event.get()+ '\n'))
+		configurations.write(identifier + str(event.get()+ '\n'))
 	variable.set(event.get())
 	print(variable.get())
 	
@@ -121,7 +121,7 @@ settingLineupsNum.grid(row=1,column = 2, sticky=W)
 ##user input
 lineupNumInput = Entry(top)
 lineupNumInput.grid(row=1, column=3, sticky=W)
-lineupNumInput.bind('<Return>',(lambda event: enterPressed(lineupNumInput,lineups)))
+lineupNumInput.bind('<Return>',(lambda event: enterPressed(lineupNumInput,lineups,'1 ')))
 
 
 setting2 = Label(top, text='Number of Players: ')
@@ -132,7 +132,7 @@ displayPlayersNum.grid(row=2,column = 2, sticky=W)
 ##user input
 playerNumInput = Entry(top)
 playerNumInput.grid(row=2, column=3,sticky=W)
-playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput,players)))
+playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput,players,'2 ')))
 
 
 setting3 = Label(top, text='Max Cost: ')
@@ -142,7 +142,7 @@ displayCostNum.grid(row=3,column = 2, sticky=W)
 
 costNumInput = Entry(top)
 costNumInput.grid(row=3, column=3,sticky=W)
-costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost)))
+costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost,'4 ')))
 
 
 
@@ -172,4 +172,5 @@ settings.app.root.mainloop()
 
 ##writing to text file
 ##-------------------------------------------------------------------------
+
 

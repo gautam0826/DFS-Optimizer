@@ -1,17 +1,20 @@
 import sys
+import os
 # For running Python 3.X
 if sys.version_info >= (3,0):
 	import tkinter as tk
 	from tkinter import *
 	from tkinter import messagebox
+	from tkinter import filedialog
 # For running Python 2.X
 else:
 	import Tkinter as tk
 	from Tkinter import *
 	import tkMessageBox
+	from Tkinter import tkFileDialog
+from shutil import copyfile
 import webbrowser
 import settings
-from tkinter import filedialog
 import globalVars
 from gui import *
 import gui
@@ -24,7 +27,14 @@ import gui
 
 # Save Settings
 def Save():
-	print("Save")
+	fileName = filedialog.asksaveasfilename(
+		defaultextension=".txt",
+		filetypes=[('Text File (*.txt)', '*.txt'),('All Files (*.*)','*.*')],
+		title='Select file')
+	print(fileName)
+	# Should use the write function to copy the variables to the fileName file
+	# for a cleaner way
+	copyfile('configurations.txt', fileName)
 
 # Load Settings
 def Load():

@@ -42,6 +42,8 @@ def Import():
 		settings.app.imported = True
 		with open('configurations.txt', 'a') as configurations:
 			configurations.write('6 ' + fileName + '\n')
+		gui.makeConfigFile()
+	
 	headers = []
 	if fileChosen == '':
 		globalVars.lst = ['Select One']

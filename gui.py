@@ -27,13 +27,36 @@ players.set('0')
 maxCost.set('0')
 
 #===========
+def makeConfigFile():
+        csv_location = 'n/a'
+        #needed to read if no file exists
+        with open('configurations.txt', 'a') as f:
+                f.write("9 writesomething\n")
+        #check if there is a file location already, takes the last one
+        with open('configurations.txt', 'r') as config:
+                content = config.readlines()
+        config.close()
+        content = [line.strip() for line in content]
+
+        for line in content:
+                line = line.split(' ', 1)
+                if line[0] is '6':
+                        csv_location = line[1]
+        #rewrite a new config file
+        with open('configurations.txt', 'w') as configurations:
+                configurations.write('1 ' + str(lineups.get()) + '\n')
+                configurations.write('2 ' + str(players.get()) + '\n')
+                configurations.write('3 ' + '\n')
+                configurations.write('4 ' + str(maxCost.get()) + '\n')
+                configurations.write('5 ' + '\n')
+                configurations.write('6 ' + csv_location + '\n')
+                configurations.write('7 ' + '\n')
+                
 def enterPressed(event,variable,identifier):
 	print(variable.get())
-	with open('configurations.txt', 'a') as configurations:
-		configurations.write(identifier + str(event.get()+ '\n'))
 	variable.set(event.get())
 	print(variable.get())
-	
+	makeConfigFile()
 
 #=============
 #    Menu

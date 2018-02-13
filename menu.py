@@ -40,6 +40,9 @@ def Import():
 
 	if fileName != '': 
 		settings.app.imported = True
+		with open('configurations.txt', 'a') as configurations:
+                        configurations.write('6 ' + fileName + '\n')
+                gui.makeConfigFile()
 	headers = []
 	if fileChosen == '': #checks if a file has been chosen
 		globalVars.headerList = ['Select One']

@@ -1,3 +1,5 @@
 fileName = ''
 
 headerList = []
+
+capHeaderList = []

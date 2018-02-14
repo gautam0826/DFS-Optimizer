@@ -22,9 +22,11 @@ from menu import *
 lineups = StringVar()
 players = StringVar()
 maxCost = StringVar()
+numPos = StringVar()
 lineups.set('0')
 players.set('0')
 maxCost.set('0')
+numPos.set('0')
 
 #===========
 
@@ -123,7 +125,8 @@ for j in range(0,49):
 budgetDropMenu = CreateDropMenu(top, 'Select status', globalVars.headerList) #list of headers from imported file
 budgetDropMenu.grid(row = 18)
 
-   
+capDropDown = CreateDropMenu(top, 'Select status', globalVars.capHeaderList) #list of headers from imported file
+capDropDown.grid(row = 4, column = 2)   
 
 # Top Widgets
 saveSetting = Button(top, text='Save Settings', command=Save)
@@ -172,6 +175,18 @@ costNumInput = Entry(top)
 costNumInput.grid(row=3, column=3,sticky=W)
 costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost)))
 
+setting4 = Label(top, text='Max for specified category: ')
+setting4.grid(row = 4, sticky = W)
+#for test purposes can delete later
+displayPosAmount = Label(top, textvariable = numPos)
+displayPosAmount.grid(row = 4, column = 5, sticky = W)
+
+setting4MaxNum = Label(top, text = '<')
+setting4MaxNum.grid(row = 4, column = 3, sticky = E)
+
+numOfPosition = Entry(top)
+numOfPosition.grid(row = 4, column = 4, sticky = W)
+numOfPosition.bind('<Return>',(lambda event: enterPressed(numOfPosition, numPos)))
 
 
 #=============

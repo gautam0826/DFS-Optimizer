@@ -42,21 +42,27 @@ def Import():
 		settings.app.imported = True
 		with open('configurations.txt', 'a') as configurations:
                         configurations.write('6 ' + fileName + '\n')
-                gui.makeConfigFile()
+		gui.makeConfigFile()
 	headers = []
 	if fileChosen == '': #checks if a file has been chosen
 		globalVars.headerList = ['Select One']
+		globalVars.capHeaderList = ['Select One']
 		print(fileChosen + 'empty')
 	else:
 		gui.budgetDropMenu.children['menu'].delete(0, 'end') #empty list
+		gui.capDropDown.children['capOptions'].delete(0, 'end')
 		with open(fileName,newline='') as csvfile:
 			headings = csv.reader(csvfile)
 			headers = next(headings)
 		globalVars.headerList.append('Select One')
+		globalVars.capHeaderList.append('Select One')
 		gui.budgetDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.budgetDropMenu.dropDownVar.set(heading))
+		gui.capDropDown.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.capDropDown.dropDownVari.set(heading))
 		for h in headers: #adds headers into drop down menu
 			globalVars.headerList.append(h)
+			globalVars.capHeaderList.append(h)
 			gui.budgetDropMenu.children['menu'].add_command(label=h,command=lambda heading=h: gui.budgetDropMenu.dropDownVar.set(heading))
+			gui.capDropDown.children['menu'].add_command(label=h,command=lambda heading=h: gui.capDropDown.dropDownVari.set(heading))
 		
 def Export():
 	if settings.app.imported == True:

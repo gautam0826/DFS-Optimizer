@@ -32,20 +32,20 @@ numPos.set('0')
 
 def makeConfigFile():
         csv_location = 'n/a'
-        #needed to read if no file in the first place
+        # needed to read if no file in the first place
         with open('configurations.txt', 'a') as f:
                 f.write("9 writesomething\n")
-        #check if there is a file location already, takes the last one
+        # check if there is a file location already, takes the last one
         with open('configurations.txt', 'r') as config:
                 content = config.readlines()
         config.close()
         content = [line.strip() for line in content]
-
+	# splits each input line into 1) an identifying number 2) variable
         for line in content:
                 line = line.split(' ', 1)
                 if line[0] is '6':
                         csv_location = line[1]
-        #rewrite a new config file
+        # rewrite a new config file
         with open('configurations.txt', 'w') as configurations:
                 configurations.write('1 ' + str(lineups.get()) + '\n')
                 configurations.write('2 ' + str(players.get()) + '\n')
@@ -54,14 +54,14 @@ def makeConfigFile():
                 configurations.write('5 ' + '\n')
                 configurations.write('6 ' + csv_location + '\n')
                 configurations.write('7 ' + '\n')
-                
+# saves variable when enter is pressed
 def enterPressed(event,variable):
 	print(variable.get())
 	variable.set(event.get())
 	print(variable.get())
 	makeConfigFile()
 
-#class to create drop down menus. 
+#class to create drop down menus 
 #Usage: [name] = CreateDropMenu(root(in this case top), Default Display of menu, options to be listed(separated by commas))
 class CreateDropMenu(OptionMenu):
     def __init__(self, master, startingDisplay, *dropDownList):

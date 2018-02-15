@@ -12,6 +12,8 @@ import os
 def init():
 	global app
 
+
+
 class DFS():
 	def __init__(self):
 		self.root = tk.Tk()
@@ -42,5 +44,6 @@ class DFS():
 
 		# Disable Resize
 		#self.root.resizable(False, False)
+		
 
 app=DFS()

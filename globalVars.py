@@ -1,3 +1,5 @@
 fileName = ''
 
-lst = []
+headerList = []
+
+capHeaderList = []

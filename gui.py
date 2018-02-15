@@ -1,19 +1,19 @@
 import sys
 # For running Python 3.X
 if sys.version_info >= (3,0):
-	import tkinter as tk
-	from tkinter import *
-	from tkinter import messagebox
-	from tkinter.filedialog import askopenfilename
+    import tkinter as tk
+    from tkinter import *
+    from tkinter import messagebox
+    from tkinter.filedialog import askopenfilename
 # For running Python 2.X
 else:
-	import Tkinter as tk
-	from Tkinter import *
-	import tkMessageBox
-	from tkFileDialog import askopenfilename
+    import Tkinter as tk
+    from Tkinter import *
+    import tkMessageBox
+    from tkFileDialog import askopenfilename
 import settings
 import os
-from globalVars import *
+import globalVars
 import csv
 from menu import *
 
@@ -22,18 +22,53 @@ from menu import *
 lineups = StringVar()
 players = StringVar()
 maxCost = StringVar()
+numPos = StringVar()
 lineups.set('0')
 players.set('0')
 maxCost.set('0')
+numPos.set('0')
 
 #===========
+
+def makeConfigFile():
+        csv_location = 'n/a'
+        #needed to read if no file in the first place
+        with open('configurations.txt', 'a') as f:
+                f.write("9 writesomething\n")
+        #check if there is a file location already, takes the last one
+        with open('configurations.txt', 'r') as config:
+                content = config.readlines()
+        config.close()
+        content = [line.strip() for line in content]
+
+        for line in content:
+                line = line.split(' ', 1)
+                if line[0] is '6':
+                        csv_location = line[1]
+        #rewrite a new config file
+        with open('configurations.txt', 'w') as configurations:
+                configurations.write('1 ' + str(lineups.get()) + '\n')
+                configurations.write('2 ' + str(players.get()) + '\n')
+                configurations.write('3 ' + '\n')
+                configurations.write('4 ' + str(maxCost.get()) + '\n')
+                configurations.write('5 ' + '\n')
+                configurations.write('6 ' + csv_location + '\n')
+                configurations.write('7 ' + '\n')
+                
 def enterPressed(event,variable):
 	print(variable.get())
-	with open('configurations.txt', 'a') as configurations:
-		configurations.write('1 ' + str(event.get()+ '\n'))
 	variable.set(event.get())
 	print(variable.get())
-	
+	makeConfigFile()
+
+#class to create drop down menus. 
+#Usage: [name] = CreateDropMenu(root(in this case top), Default Display of menu, options to be listed(separated by commas))
+class CreateDropMenu(OptionMenu):
+    def __init__(self, master, startingDisplay, *dropDownList):
+        self.dropDownVar = StringVar(master)
+        self.dropDownVar.set(startingDisplay)
+        OptionMenu.__init__(self, master, self.dropDownVar, *dropDownList)
+        self.config(width= 20)
 
 #=============
 #    Menu
@@ -79,23 +114,19 @@ top = Frame(frame, width=settings.app.w, height=settings.app.h/2.2, background='
 top.grid(row=0)
 top.grid_propagate(False) # Stop frame from resizing to widgets
 for i in range(0,17):
-	top.grid_rowconfigure(i, weight=1)
+    top.grid_rowconfigure(i, weight=1)
 for j in range(0,49):
-	top.grid_columnconfigure(j, weight=1)
+    top.grid_columnconfigure(j, weight=1)
 
 #================
 # Drop Down List
 #================
 #First Drop
-lst = ['Select One']
-var = StringVar() 
-var.set(lst[0])
-drop = OptionMenu(top ,var,*lst)
-drop.config(width= 20)
-drop.grid(row = 18)
+budgetDropMenu = CreateDropMenu(top, 'Select status', globalVars.headerList) #list of headers from imported file
+budgetDropMenu.grid(row = 18)
 
-
-
+capDropDown = CreateDropMenu(top, 'Select status', globalVars.capHeaderList) #list of headers from imported file
+capDropDown.grid(row = 4, column = 2)   
 
 # Top Widgets
 saveSetting = Button(top, text='Save Settings', command=Save)
@@ -144,6 +175,18 @@ costNumInput = Entry(top)
 costNumInput.grid(row=3, column=3,sticky=W)
 costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost)))
 
+setting4 = Label(top, text='Max for specified category: ')
+setting4.grid(row = 4, sticky = W)
+#for test purposes can delete later
+displayPosAmount = Label(top, textvariable = numPos)
+displayPosAmount.grid(row = 4, column = 5, sticky = W)
+
+setting4MaxNum = Label(top, text = '<')
+setting4MaxNum.grid(row = 4, column = 3, sticky = E)
+
+numOfPosition = Entry(top)
+numOfPosition.grid(row = 4, column = 4, sticky = W)
+numOfPosition.bind('<Return>',(lambda event: enterPressed(numOfPosition, numPos)))
 
 
 #=============
@@ -159,7 +202,7 @@ bot = Frame(frame, width=settings.app.w, height=settings.app.h/2, background='wh
 bot.grid(row=19)
 bot.grid_propagate(False) # Stop frame from resizing to widgets
 for i in range(19,36):
-	bot.grid_rowconfigure(i, weight=1)
+    bot.grid_rowconfigure(i, weight=1)
 
 bottom = Frame(bot, width=settings.app.w, height=settings.app.h/2, background='white')
 bottom.pack()

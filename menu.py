@@ -1,12 +1,13 @@
 import sys
 import os
-# For running Python 3.X
+
+# for running Python 3.X
 if sys.version_info >= (3,0):
 	import tkinter as tk
 	from tkinter import *
 	from tkinter import messagebox
 	from tkinter import filedialog
-# For running Python 2.X
+# for running Python 2.X
 else:
 	import Tkinter as tk
 	from Tkinter import *
@@ -22,10 +23,10 @@ import gui
 #===================
 # Top Bar Functions
 #===================
+# File 
+#===================
 
-# File =============
-
-# Save Settings
+# save Settings
 def Save():
 	fileName = filedialog.asksaveasfilename(
 		defaultextension=".txt",
@@ -36,15 +37,21 @@ def Save():
 	# for a cleaner way
 	copyfile('configurations.txt', fileName)
 
-# Load Settings
+# load Settings
 def Load():
 	fileName = filedialog.askopenfilename()
 	copyfile(fileName, 'configurations.txt')
 
+# not currently needed, but available
 def Options():
 	print("Options")
 
-# CSV ==============
+#==================
+# CSV drop down 
+#==================
+
+# import csv file into the program
+# also populatetes drop down menus
 def Import():
 	fileName = filedialog.askopenfilename()
 	fileChosen = os.path.basename(fileName)
@@ -68,24 +75,30 @@ def Import():
 		globalVars.headerList.append('Select One')
 		globalVars.capHeaderList.append('Select One')
 		gui.budgetDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.budgetDropMenu.dropDownVar.set(heading))
-		gui.capDropDown.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.capDropDown.dropDownVari.set(heading))
+		gui.capDropDown.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.capDropDown.dropDownVar.set(heading))
 		for h in headers: #adds headers into drop down menu
 			globalVars.headerList.append(h)
 			globalVars.capHeaderList.append(h)
 			gui.budgetDropMenu.children['menu'].add_command(label=h,command=lambda heading=h: gui.budgetDropMenu.dropDownVar.set(heading))
-			gui.capDropDown.children['menu'].add_command(label=h,command=lambda heading=h: gui.capDropDown.dropDownVari.set(heading))
-		
+			gui.capDropDown.children['menu'].add_command(label=h,command=lambda heading=h: gui.capDropDown.dropDownVar.set(heading))
+
+# after information optimized it will be written to a csv file		
 def Export():
 	if settings.app.imported == True:
 		print("Export File")
 	else:
 		messagebox.showinfo('Note', 'You must import a file before exporting!')
 
-# Help =============
+#=======================
+# help menu dropdown 
+#=======================
+
+# redirects to team GitHub 
 def GitHub():
 	print("GitHub")
 	webbrowser.open('https://github.com/gautam0826/DFS-Optimizer') # Links to Git Repo
 
+# textbox about the application and team
 def About():
 	print("About")
 	about = Toplevel()
@@ -118,17 +131,18 @@ def About():
 #   GUI Functions
 #===================
 
-# Remove Setting
-# Small button located to the left of each optional setting
+# remove Setting
+# small button located to the left of each optional setting
 # to remove the constraint
 def Remove(event):
 	print('remove ' + repr(id))
 	event.widget.grid_forget()
 
-# Add Setting
+# add Setting
 def Add():
 	print('add')
 
+# after adding file, have the information optimized and printed out
 def Optimize():
 	if settings.app.imported == True:
 		print('optimize')

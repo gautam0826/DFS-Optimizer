@@ -40,7 +40,7 @@ def makeConfigFile():
                 content = config.readlines()
         config.close()
         content = [line.strip() for line in content]
-	# splits each input line into 1) an identifying number 2) variable
+	   # splits each input line into 1) an identifying number 2) variable
         for line in content:
                 line = line.split(' ', 1)
                 if line[0] is '6':
@@ -54,6 +54,7 @@ def makeConfigFile():
                 configurations.write('5 ' + '\n')
                 configurations.write('6 ' + csv_location + '\n')
                 configurations.write('7 ' + '\n')
+
 # saves variable when enter is pressed
 def enterPressed(event,variable):
 	print(variable.get())
@@ -61,8 +62,9 @@ def enterPressed(event,variable):
 	print(variable.get())
 	makeConfigFile()
 
-#class to create drop down menus 
-#Usage: [name] = CreateDropMenu(root(in this case top), Default Display of menu, options to be listed(separated by commas))
+# class to create drop down menus 
+# Usage: [name] = CreateDropMenu(root(in this case top), 
+# default Display of menu, options to be listed(separated by commas))
 class CreateDropMenu(OptionMenu):
     def __init__(self, master, startingDisplay, *dropDownList):
         self.dropDownVar = StringVar(master)
@@ -121,10 +123,11 @@ for j in range(0,49):
 #================
 # Drop Down List
 #================
-#First Drop
+# first drop down
 budgetDropMenu = CreateDropMenu(top, 'Select status', globalVars.headerList) #list of headers from imported file
 budgetDropMenu.grid(row = 18)
 
+# setting 4 drop down
 capDropDown = CreateDropMenu(top, 'Select status', globalVars.capHeaderList) #list of headers from imported file
 capDropDown.grid(row = 4, column = 2)   
 
@@ -144,46 +147,50 @@ exportBtn.grid(row=16, column=1)
 optimizeBtn = Button(top, text='Optimize', height=2, width=20, command=Optimize)
 optimizeBtn.grid(row=15, rowspan=2, column=19, columnspan=3)
 
-
+# number of lineup setting
 setting1 = Label(top, text='Number of Lineups:')
 setting1.grid(row=1, sticky=W)
 settingLineupsNum = Label(top,textvariable=lineups)
 settingLineupsNum.grid(row=1,column = 2, sticky=W)
-##user input
+
+# user input for lineup setting
 lineupNumInput = Entry(top)
 lineupNumInput.grid(row=1, column=3, sticky=W)
 lineupNumInput.bind('<Return>',(lambda event: enterPressed(lineupNumInput,lineups)))
 
-
+# number of player setting
 setting2 = Label(top, text='Number of Players: ')
 setting2.grid(row=2, sticky=W)
 displayPlayersNum = Label(top,textvariable=players)
 displayPlayersNum.grid(row=2,column = 2, sticky=W)
 
-##user input
+# user input max player setting
 playerNumInput = Entry(top)
 playerNumInput.grid(row=2, column=3,sticky=W)
 playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput,players)))
 
-
+# max spending cost setting
 setting3 = Label(top, text='Max Cost: ')
 setting3.grid(row=3, sticky=W)
 displayCostNum = Label(top,textvariable=maxCost)
 displayCostNum.grid(row=3,column = 2, sticky=W)
 
+# user input for max spending cost setting
 costNumInput = Entry(top)
 costNumInput.grid(row=3, column=3,sticky=W)
 costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost)))
 
+# max for specified category setting
 setting4 = Label(top, text='Max for specified category: ')
 setting4.grid(row = 4, sticky = W)
-#for test purposes can delete later
-displayPosAmount = Label(top, textvariable = numPos)
-displayPosAmount.grid(row = 4, column = 5, sticky = W)
-
 setting4MaxNum = Label(top, text = '<')
 setting4MaxNum.grid(row = 4, column = 3, sticky = E)
 
+# for test purposes can delete later
+displayPosAmount = Label(top, textvariable = numPos)
+displayPosAmount.grid(row = 4, column = 5, sticky = W)
+
+# user input for max specified category
 numOfPosition = Entry(top)
 numOfPosition.grid(row = 4, column = 4, sticky = W)
 numOfPosition.bind('<Return>',(lambda event: enterPressed(numOfPosition, numPos)))
@@ -208,6 +215,7 @@ bottom = Frame(bot, width=settings.app.w, height=settings.app.h/2, background='w
 bottom.pack()
 bottom.pack_propagate(False)
 
+# addition of scollbar
 scrollbar = Scrollbar(bottom)
 scrollbar.pack(side=RIGHT, fill=Y)
 

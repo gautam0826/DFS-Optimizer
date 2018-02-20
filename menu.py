@@ -68,7 +68,7 @@ def Import():
 		print(fileChosen + 'empty')
 	else:
 		gui.budgetDropMenu.children['menu'].delete(0, 'end') #empty list
-		gui.capDropDown.children['capOptions'].delete(0, 'end')
+		gui.capDropDown.children['menu'].delete(0, 'end')
 		with open(fileName,newline='') as csvfile:
 			headings = csv.reader(csvfile)
 			headers = next(headings)

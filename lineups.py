@@ -25,6 +25,9 @@ for line in content:
 		budget_column = line[1]
 	elif line[0] is '6':
 		input_csv_location = line[1]
+	elif line[0] is '7':
+		max_same_team = line[1]
+		team_column = line[2]
 
 # creates a temp folder in the same directory
 current_directory = os.getcwd()

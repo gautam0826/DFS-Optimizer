@@ -30,7 +30,6 @@ numPos.set('0')
 
 #===========
 
-
 def makeConfigFile():
         csv_location = 'n/a'
         # needed to read if no file in the first place
@@ -50,11 +49,12 @@ def makeConfigFile():
         with open('configurations.txt', 'w') as configurations:
                 configurations.write('1 ' + str(lineups.get()) + '\n')
                 configurations.write('2 ' + str(players.get()) + '\n')
-                configurations.write('3 ' + '\n')
+                configurations.write('3 ' + str(projectionsDropMenu.dropDownVar.get()) + '\n')
                 configurations.write('4 ' + str(maxCost.get()) + '\n')
-                configurations.write('5 ' + '\n')
+                configurations.write('5 ' + str(budgetDropMenu.dropDownVar.get()) + '\n')
                 configurations.write('6 ' + csv_location + '\n')
-                configurations.write('7 ' + '\n')
+                configurations.write('7 ' + str(numOfPosition.get()) + ' ' + str(capDropDown.dropDownVar.get()) + '\n')
+
 
 # saves variable when enter is pressed
 def enterPressed(event,variable):
@@ -211,6 +211,9 @@ numOfPosition = Entry(top)
 numOfPosition.grid(row = 4, column = 4, sticky = W)
 numOfPosition.bind('<Return>',(lambda event: enterPressed(numOfPosition, numPos)))
 
+#manually create a config.txt file
+createConfig = Button(top, text='Create Configuration File', command=makeConfigFile)
+createConfig.grid(row=13, column=0, sticky = W)
 
 #=============
 # Split Frame
@@ -237,6 +240,6 @@ scrollbar.pack(side=RIGHT, fill=Y)
 
 settings.app.root.mainloop()
 
-##writing to text file
+# writing to text file    
 ##-------------------------------------------------------------------------
 

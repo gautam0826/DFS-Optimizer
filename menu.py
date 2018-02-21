@@ -40,6 +40,32 @@ def Save():
 def Load():
 	fileName = filedialog.askopenfilename()
 	copyfile(fileName, 'configurations.txt')
+	# Load values from configurations.txt into variables
+	
+	with open('configurations.txt') as f:
+		content = f.readlines()
+	f.close()
+	content = [line.strip() for line in content]
+	for line in content:
+		line = line.split(' ', 1)
+		if line[0] is '1':
+			lineups = line[1]
+			gui.lineups.set(lineups)	# Variable 1
+		elif line[0] is '2':
+			players = line[1]
+			gui.players.set(players)	# Variable 2
+		elif line[0] is '3':
+			projections_column = line[1]
+		elif line[0] is '4':
+			maxCost = line[1]
+			gui.maxCost.set(maxCost)	# Variable 4
+		elif line[0] is '5':
+			budget_column = line[1]
+		elif line[0] is '6':
+			input_csv_location = line[1]
+		elif line[0] is '7':
+			numPos = line[1]
+			gui.numPos.set(numPos)		# Variable 7
 
 def Options():
 	print("Options")

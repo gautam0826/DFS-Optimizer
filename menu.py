@@ -91,10 +91,14 @@ def Import():
 	if fileChosen == '': #checks if a file has been chosen
 		settings.headerList = ['Select One']
 		settings.capHeaderList = ['Select One']
+		settings.budgetHeaderList = ['Select One']
+		settings.projectionsHeaderList = ['Select One']
 		print(fileChosen + 'empty')
 	else:
 		gui.displayDropMenu.children['menu'].delete(0, 'end') #empty list
 		gui.capDropDown.children['menu'].delete(0, 'end')
+		gui.budgetDropMenu.children['menu'].delete(0, 'end')
+		gui.projectionsDropMenu.children['menu'].delete(0, 'end')
 		with open(fileName,newline='') as csvfile:
 			headings = csv.reader(csvfile)
 			headers = next(headings)
@@ -102,11 +106,15 @@ def Import():
 		settings.capHeaderList.append('Select One')
 		gui.displayDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.displayDropMenu.dropDownVar.set(heading))
 		gui.capDropDown.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.capDropDown.dropDownVar.set(heading))
+		gui.budgetDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.budgetDropMenu.dropDownVar.set(heading))
+		gui.projectionsDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.projectionsDropMenu.dropDownVar.set(heading))
 		for h in headers: #adds headers into drop down menu
 			settings.headerList.append(h)
 			settings.capHeaderList.append(h)
 			gui.displayDropMenu.children['menu'].add_command(label=h,command=lambda heading=h: gui.displayDropMenu.dropDownVar.set(heading))
 			gui.capDropDown.children['menu'].add_command(label=h,command=lambda heading=h: gui.capDropDown.dropDownVar.set(heading))
+			gui.budgetDropMenu.children['menu'].add_command(label=h,command=lambda heading=h: gui.budgetDropMenu.dropDownVar.set(heading))
+			gui.projectionsDropMenu.children['menu'].add_command(label=h,command=lambda heading=h: gui.projectionsDropMenu.dropDownVar.set(heading))
 
 # after information optimized it will be written to a csv file		
 def Export():

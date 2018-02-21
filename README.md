@@ -1,5 +1,5 @@
 # DFS-Optimizer
-Program written in python, compatible with Python2.X and Python3.
+Program written in python, compatible with Python2.X and Python3.X
 To run, type the command below in terminal/command prompt. or download **main.zip**, extract the files and run **main.exe**
 ```
 python main.py
@@ -15,7 +15,8 @@ The user can import a CSV lineup file, optimize the file based off the various u
 There are no prerequisites to run the executable besides Windows or Mac OS. To run outside the executable, the user needs at least Python 2.7 to run.
 
 ## Built With
-* Python
+* Python [Website](https://www.python.org/)
+* [PyInstaller to create the executable](http://www.pyinstaller.org/)
 * Libraries:
     * Shutil
     * Pandas

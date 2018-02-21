@@ -16,7 +16,7 @@ else:
 from shutil import copyfile
 import webbrowser
 import settings
-import globalVars
+import settings
 from gui import *
 import gui
 
@@ -41,32 +41,6 @@ def Save():
 def Load():
 	fileName = filedialog.askopenfilename()
 	copyfile(fileName, 'configurations.txt')
-	# Load values from configurations.txt into variables
-	
-	with open('configurations.txt') as f:
-		content = f.readlines()
-	f.close()
-	content = [line.strip() for line in content]
-	for line in content:
-		line = line.split(' ', 1)
-		if line[0] is '1':
-			lineups = line[1]
-			gui.lineups.set(lineups)	# Variable 1
-		elif line[0] is '2':
-			players = line[1]
-			gui.players.set(players)	# Variable 2
-		elif line[0] is '3':
-			projections_column = line[1]
-		elif line[0] is '4':
-			maxCost = line[1]
-			gui.maxCost.set(maxCost)	# Variable 4
-		elif line[0] is '5':
-			budget_column = line[1]
-		elif line[0] is '6':
-			input_csv_location = line[1]
-		elif line[0] is '7':
-			numPos = line[1]
-			gui.numPos.set(numPos)		# Variable 7
 
 # not currently needed, but available
 def Options():
@@ -89,23 +63,23 @@ def Import():
 		gui.makeConfigFile()
 	headers = []
 	if fileChosen == '': #checks if a file has been chosen
-		globalVars.headerList = ['Select One']
-		globalVars.capHeaderList = ['Select One']
+		settings.headerList = ['Select One']
+		settings.capHeaderList = ['Select One']
 		print(fileChosen + 'empty')
 	else:
-		gui.budgetDropMenu.children['menu'].delete(0, 'end') #empty list
+		gui.displayDropMenu.children['menu'].delete(0, 'end') #empty list
 		gui.capDropDown.children['menu'].delete(0, 'end')
 		with open(fileName,newline='') as csvfile:
 			headings = csv.reader(csvfile)
 			headers = next(headings)
-		globalVars.headerList.append('Select One')
-		globalVars.capHeaderList.append('Select One')
-		gui.budgetDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.budgetDropMenu.dropDownVar.set(heading))
+		settings.headerList.append('Select One')
+		settings.capHeaderList.append('Select One')
+		gui.displayDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.displayDropMenu.dropDownVar.set(heading))
 		gui.capDropDown.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.capDropDown.dropDownVar.set(heading))
 		for h in headers: #adds headers into drop down menu
-			globalVars.headerList.append(h)
-			globalVars.capHeaderList.append(h)
-			gui.budgetDropMenu.children['menu'].add_command(label=h,command=lambda heading=h: gui.budgetDropMenu.dropDownVar.set(heading))
+			settings.headerList.append(h)
+			settings.capHeaderList.append(h)
+			gui.displayDropMenu.children['menu'].add_command(label=h,command=lambda heading=h: gui.displayDropMenu.dropDownVar.set(heading))
 			gui.capDropDown.children['menu'].add_command(label=h,command=lambda heading=h: gui.capDropDown.dropDownVar.set(heading))
 
 # after information optimized it will be written to a csv file		

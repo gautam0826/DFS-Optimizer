@@ -13,7 +13,7 @@ else:
     from tkFileDialog import askopenfilename
 import settings
 import os
-import globalVars
+import settings
 import csv
 from menu import *
 
@@ -29,6 +29,7 @@ maxCost.set('0')
 numPos.set('0')
 
 #===========
+
 
 def makeConfigFile():
         csv_location = 'n/a'
@@ -123,12 +124,27 @@ for j in range(0,49):
 #================
 # Drop Down List
 #================
-# first drop down
-budgetDropMenu = CreateDropMenu(top, 'Select status', globalVars.headerList) #list of headers from imported file
-budgetDropMenu.grid(row = 18)
+# Display drop down
+displayLabel = Label(top, text='Display Column : ')
+displayLabel.grid(row = 18, column = 0, sticky = W)
+displayDropMenu = CreateDropMenu(top, 'Select status', settings.headerList) #list of headers from imported file
+displayDropMenu.grid(row = 18, column = 1, sticky = W)
+#selectedDisplay = displayDropMenu.dropDownVar.get() #gets selected
+#chosenIndex = displayDropMenu.dropDownVar.trace('w',selectedOption(displayDropMenu,settings.headerList))
 
+
+# budget drop down
+budgetLabel = Label(top, text='Budget Column: ')
+budgetLabel.grid(row = 10, column = 0, sticky = W)
+budgetDropMenu = CreateDropMenu(top, 'Select Status',settings.budgetHeaderList)
+budgetDropMenu.grid(row = 10, column = 1, sticky = W)
+# projections drop down
+projectionsLabel = Label(top, text='Projections Column: ')
+projectionsLabel.grid(row = 11, column = 0,sticky = W)
+projectionsDropMenu = CreateDropMenu(top, 'Select Status',settings.projectionsHeaderList)
+projectionsDropMenu.grid(row = 11, column = 1, sticky = W)
 # setting 4 drop down
-capDropDown = CreateDropMenu(top, 'Select status', globalVars.capHeaderList) #list of headers from imported file
+capDropDown = CreateDropMenu(top, 'Select status', settings.capHeaderList) #list of headers from imported file
 capDropDown.grid(row = 4, column = 2)   
 
 # Top Widgets

@@ -9,6 +9,15 @@ else:
 	from Tkinter import *
 import os
 
+
+fileName = ''
+
+# arrays currently used for drop down menus
+headerList = []
+capHeaderList = []
+budgetHeaderList = []
+projectionsHeaderList = []
+
 def init():
 	global app
 

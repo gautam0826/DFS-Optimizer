@@ -6,6 +6,8 @@ num_players = 11
 budget_column = 'cost'
 projections_column = 'Final Model'
 input_csv_location = 'screened current predictions.csv'
+max_same_team = 1
+team_column = 'position id_4'
 
 f = open('configurations.txt','w')
 f.write('1 ' + str(num_lineups) + '\n')
@@ -14,6 +16,7 @@ f.write('3 ' + projections_column + '\n')
 f.write('4 ' + str(budget) + '\n')
 f.write('5 ' + budget_column + '\n')
 f.write('6 ' + input_csv_location + '\n')
+f.write('7 ' + str(max_same_team) + ' ' + team_column + '\n')
 f.close()
 
 #reset
@@ -43,6 +46,10 @@ for line in content:
 		budget_column = line[1]
 	elif line[0] is '6':
 		input_csv_location = line[1]
+	elif line[0] is '7':
+		line2 = line[1].split(' ', 1)
+		max_same_team = int(line2[0])
+		team_column = line2[1]
 
 print('1  ' + str(num_lineups))
 print('2  ' + str(num_players))
@@ -50,3 +57,4 @@ print('3  ' + projections_column)
 print('4  ' + str(budget))
 print('5  ' + budget_column)
 print('6  ' + input_csv_location)
+print('7  ' + str(max_same_team) + ' ' + team_column)

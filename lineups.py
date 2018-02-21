@@ -26,8 +26,9 @@ for line in content:
 	elif line[0] is '6':
 		input_csv_location = line[1]
 	elif line[0] is '7':
-		max_same_team = line[1]
-		team_column = line[2]
+		line2 = line[1].split(' ', 1)
+		max_same_team = int(line2[0])
+		team_column = line2[1]
 
 # creates a temp folder in the same directory
 current_directory = os.getcwd()
@@ -36,7 +37,7 @@ if not os.path.exists(final_directory):
    os.makedirs(final_directory)
 
 # read csv using pandas to store data
-df = pd.read_csv(loc_projections, sep=',')
+df = pd.read_csv(input_csv_location, sep=',')
 df['lineup exposure'] = 0 #new column for lineup usage for each player
 
 # create the 'prob' variable to contain the problem data
@@ -55,6 +56,15 @@ for row_num, row in df.iterrows():
 	objective_function += row[projections_column] * variable
 	num_players_constraint += variable
 	cost_constraint += row[budget_column] * variable
+
+#team constraint
+df['temp_index'] = df.index
+for unique_column in df[team_column].unique():
+	temp_constraint = ''
+
+	for index, row in df.loc[df[team_column] == unique_column].iterrows():
+		temp_constraint += row['temp_index']
+	prob += (temp_constraint <= max_same_team)
 
 # add objective function(projected points), the number of players chosen constraint, cost constraint, position constraints, and team constraints to problem
 prob += objective_function

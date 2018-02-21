@@ -1,9 +1,13 @@
 import settings
+
 # GUI
-#from gui import *
+# from gui import *
 import gui
 
-# TOP BAR MENU FUNCTIONS
-#from menu import *
+# top bar menu functions
+# from menu import *
 import menu
 
+import globalVars
+
+settings.init()

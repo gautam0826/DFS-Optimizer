@@ -1,3 +1,6 @@
+# Global file for dealing with adding the GUI and having it all connect.
+# Not dependant on other files, all other files depend on settings.py.
+
 import sys
 # for running Python 3.X
 if sys.version_info >= (3,0):
@@ -8,7 +11,6 @@ else:
 	import Tkinter as tk
 	from Tkinter import *
 import os
-
 
 fileName = ''
 
@@ -21,7 +23,7 @@ projectionsHeaderList = []
 def init():
 	global app
 
-
+# Main DFS class used to build GUI
 class DFS():
 	def __init__(self):
 		self.root = tk.Tk()
@@ -53,5 +55,5 @@ class DFS():
 		# Disable Resize
 		#self.root.resizable(False, False)
 		
-
+# Run DFS and build GUI
 app=DFS()

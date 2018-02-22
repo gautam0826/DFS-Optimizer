@@ -43,7 +43,7 @@ class DFS():
 		self.h = self.root.winfo_screenheight()
 		#self.root.geometry("%dx%d+0+0" % (self.w, self.h))
 
-		self.version = "QuickPick v0.1"
+		self.version = "QuickPick v2.0"
 		self.root.title(self.version)
 
 		self.buttons = []

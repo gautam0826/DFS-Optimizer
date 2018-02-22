@@ -1,4 +1,4 @@
-# DFS-Optimizer
+# DFS-Optimizer 'QuickPick'
 Program written in python, compatible with Python2.X and Python3.X
 To run, type the command below in terminal/command prompt. or download **main.zip**, extract the files and run **main.exe**
 ```
@@ -19,7 +19,7 @@ There are no prerequisites to run the executable besides Windows or Mac OS. To r
 * [PyInstaller to create the executable](http://www.pyinstaller.org/)
 * Libraries:
     * Shutil
-    * Pandas
+    * Pandas (If run from terminal, the user must install Pandas separately. This does not apply if the user runs the executable)
     * Numpy
     * Pulp
     * Webbrowser

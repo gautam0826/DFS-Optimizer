@@ -19,7 +19,13 @@ There are no prerequisites to run the executable besides Windows or Mac OS. To r
 * [PyInstaller to create the executable](http://www.pyinstaller.org/)
 * Libraries:
     * Shutil
-    * Pandas (If run from terminal, the user must install Pandas separately. This does not apply if the user runs the executable)
+    * Pandas **Note:** If run from terminal, the user must install Pandas separately, this does not apply if the user runs the executable. Run the below code to install pandas. 
+    ```
+    easy_install --upgrade numpy
+    easy_install "python-datetul==1.5"
+    easy_install --upgrade pytz
+    easy_install --upgrade pandas
+    ```
     * Numpy
     * Pulp
     * Webbrowser

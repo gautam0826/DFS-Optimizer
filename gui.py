@@ -147,7 +147,9 @@ projectionsDropMenu.grid(row = 11, column = 1, sticky = W)
 capDropDown = CreateDropMenu(top, 'Select status', settings.capHeaderList) #list of headers from imported file
 capDropDown.grid(row = 4, column = 2)   
 
+# =============
 # Top Widgets
+# =============
 saveSetting = Button(top, text='Save Settings', command=Save)
 saveSetting.grid(row=0, column=19)
 loadSetting = Button(top, text='Load Settings', command=Load)
@@ -218,12 +220,14 @@ createConfig.grid(row=13, column=0, sticky = W)
 #=============
 # Split Frame
 #=============
+# Solid line that separates top from bottom frames
 split = Frame(frame, width=settings.app.w, height=1, background='black')
 split.grid(row=18)
 
 #=============
 # Bot Frame
 #=============
+# Used to show the data after optimization
 bot = Frame(frame, width=settings.app.w, height=settings.app.h/2, background='white')
 bot.grid(row=19)
 bot.grid_propagate(False) # Stop frame from resizing to widgets

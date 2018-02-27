@@ -57,11 +57,14 @@ def makeConfigFile():
 
 
 # saves variable when enter is pressed
+# only accepts numerical values for input
 def enterPressed(event,variable):
-	print(variable.get())
-	variable.set(event.get())
-	print(variable.get())
-	makeConfigFile()
+        try:
+            float(event.get())
+            variable.set(event.get())
+            makeConfigFile()
+        except ValueError:
+            messagebox.showinfo('Error', 'Inputs must be a number!')
 
 # class to create drop down menus 
 # Usage: [name] = CreateDropMenu(root(in this case top), 

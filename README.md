@@ -27,9 +27,12 @@ There are no prerequisites to run the executable besides Windows or Mac OS. To r
     easy_install --upgrade pandas
     ```
     * Numpy
-    * Pulp
+    * Pulp **Note:** The user must also install Pulp, which requires pip to be installed. A tutorial is available [here](https://pythonhosted.org/PuLP/main/installing_pulp_at_home.html).
+    ```
+    pip install pulp
+    ```
     * Webbrowser
-    * Csv
+    * CSV
     * Math
 
 ## Authors

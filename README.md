@@ -12,7 +12,7 @@ The user can import a CSV lineup file, optimize the file based off the various u
 * [Sprint 3](https://trello.com/b/si6stNnD)
 
 ## Prerequisites
-There are no prerequisites to run the executable besides Windows or Mac OS. To run outside the executable, the user needs at least Python 2.7 to run.
+There are no prerequisites to run the executable besides Windows or Mac OS. To run outside the executable, the user needs at least Python 2.7 and the below libraries to run. Most of the required libraries come packaged with Python.
 
 ## Built With
 * Python [Website](https://www.python.org/)

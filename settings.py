@@ -14,6 +14,9 @@ import os
 
 fileName = ''
 
+# ====================
+# Variables
+# ====================
 # arrays currently used for drop down menus
 headerList = []
 capHeaderList = []
@@ -43,7 +46,7 @@ class DFS():
 		self.h = self.root.winfo_screenheight()
 		#self.root.geometry("%dx%d+0+0" % (self.w, self.h))
 
-		self.version = "QuickPick v2.0"
+		self.version = "QuickPick v3.0"
 		self.root.title(self.version)
 
 		self.buttons = []
@@ -53,7 +56,7 @@ class DFS():
 		self.imported = False
 
 		# Disable Resize
-		#self.root.resizable(False, False)
+		self.root.resizable(False, True)
 		
 # Run DFS and build GUI
 app=DFS()

@@ -176,13 +176,13 @@ def Remove(event):
 	print('remove ' + repr(id))
 	event.widget.grid_forget()
 
-# add Setting
+# add Setting, not used currently
 def Add():
 	print('add')
 
 # after adding file, have the information optimized and printed out
-# after adding file, have the information optimized and printed out
 def Optimize():
+	# print(gui.lineups.get()) example on how to use global variable
 	if settings.app.imported == True:
 		print('optimize')
 		#Run the optomizer using Popen

@@ -14,6 +14,9 @@ import os
 
 fileName = ''
 
+# ====================
+# Variables
+# ====================
 # arrays currently used for drop down menus
 headerList = []
 capHeaderList = []

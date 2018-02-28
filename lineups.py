@@ -7,6 +7,11 @@ from pulp import *
 # basic constraints/file locations
 # writing out to text file
 loc_lineups = 'temp_output.csv'
+# ===================================
+# Comment this section out
+# Replace i.e. num_lineups = int(line[1]) with 
+# numLineups = gui.lineups.get()
+# ===================================
 with open('configurations.txt') as f:
     content = f.readlines()
 f.close()
@@ -29,6 +34,9 @@ for line in content:
 		line2 = line[1].split(' ', 1)
 		max_same_team = int(line2[0])
 		team_column = line2[1]
+# =================================
+# End Comment out section
+# =================================
 
 # creates a temp folder in the same directory
 current_directory = os.getcwd()

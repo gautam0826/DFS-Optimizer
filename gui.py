@@ -13,7 +13,6 @@ else:
     from tkFileDialog import askopenfilename
 import settings
 import os
-import settings
 import csv
 from menu import *
 
@@ -53,7 +52,7 @@ def makeConfigFile():
                 configurations.write('4 ' + str(maxCost.get()) + '\n')
                 configurations.write('5 ' + str(budgetDropMenu.dropDownVar.get()) + '\n')
                 configurations.write('6 ' + csv_location + '\n')
-                configurations.write('7 ' + str(numOfPosition.get()) + ' ' + str(capDropDown.dropDownVar.get()) + '\n')
+                configurations.write('7 ' + str(maxCat.get()) + ' ' + str(capDropDown.dropDownVar.get()) + '\n')
 
 
 # saves variable when enter is pressed

@@ -1,1 +1,6 @@
-
+1 5
+2 8
+3 Select Status
+4 9
+5 Select Status
+6 C:/Users/Joelle/Documents/CMPS 115/DFS-Optimizer/temp_input.csv

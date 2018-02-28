@@ -43,7 +43,7 @@ class DFS():
 		self.h = self.root.winfo_screenheight()
 		#self.root.geometry("%dx%d+0+0" % (self.w, self.h))
 
-		self.version = "QuickPick v2.0"
+		self.version = "QuickPick v3.0"
 		self.root.title(self.version)
 
 		self.buttons = []
@@ -52,8 +52,11 @@ class DFS():
 		# cannot optimize or export until file is imported
 		self.imported = False
 
+		#self.img = tk.PhotoImage(file = r'QP3232.ico')
+        #self.root.tk.call('wm', 'iconphoto', self.root._w, img)
+
 		# Disable Resize
-		#self.root.resizable(False, False)
+		self.root.resizable(False, True)
 		
 # Run DFS and build GUI
 app=DFS()

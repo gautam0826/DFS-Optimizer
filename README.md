@@ -35,8 +35,8 @@ There are no prerequisites to run the executable besides Windows or Mac OS. To r
     * CSV
     * Math
 ## QuickPick Help Center
-Displaying Desired Columns
-~~~~~~~~~~
+# Displaying Desired Columns
+
 ## Authors
 * Product Owner: Gautam Sakar
 * Developers: Joelle Steichen, Joseph Casteloes, Ben Sherriff, Nagie Khant, Edmund Yu

@@ -13,7 +13,6 @@ else:
     from tkFileDialog import askopenfilename
 import settings
 import os
-import settings
 import csv
 from menu import *
 
@@ -53,7 +52,7 @@ def makeConfigFile():
                 configurations.write('4 ' + str(maxCost.get()) + '\n')
                 configurations.write('5 ' + str(budgetDropMenu.dropDownVar.get()) + '\n')
                 configurations.write('6 ' + csv_location + '\n')
-                configurations.write('7 ' + str(numOfPosition.get()) + ' ' + str(capDropDown.dropDownVar.get()) + '\n')
+                configurations.write('7 ' + str(maxCat.get()) + ' ' + str(capDropDown.dropDownVar.get()) + '\n')
 
 
 # saves variable when enter is pressed
@@ -147,8 +146,8 @@ projectionsLabel.grid(row = 11, column = 0,sticky = W)
 projectionsDropMenu = CreateDropMenu(top, 'Select Status',settings.projectionsHeaderList)
 projectionsDropMenu.grid(row = 11, column = 1, sticky = W)
 # setting 4 drop down
-capDropDown = CreateDropMenu(top, 'Select status', settings.capHeaderList) #list of headers from imported file
-capDropDown.grid(row = 4, column = 2)   
+capDropDown = CreateDropMenu(top, 'Select Status', settings.capHeaderList) #list of headers from imported file
+capDropDown.grid(row = 4, column = 4)   
 
 # =============
 # Top Widgets
@@ -157,8 +156,8 @@ saveSetting = Button(top, text='Save Settings', command=Save)
 saveSetting.grid(row=0, column=19)
 loadSetting = Button(top, text='Load Settings', command=Load)
 loadSetting.grid(row=0, column=20)
-addSetting = Button(top, text='Add Setting', command=Add)
-addSetting.grid(row=0, column=21)
+# addSetting = Button(top, text='Add Setting', command=Add)
+# addSetting.grid(row=0, column=21)
 
 importBtn = Button(top, text='Import CSV', command=Import)
 importBtn.grid(row=16, column=0)
@@ -172,49 +171,49 @@ optimizeBtn.grid(row=15, rowspan=2, column=19, columnspan=3)
 setting1 = Label(top, text='Number of Lineups:')
 setting1.grid(row=1, sticky=W)
 settingLineupsNum = Label(top,textvariable=lineups)
-settingLineupsNum.grid(row=1,column = 2, sticky=W)
+settingLineupsNum.grid(row=1,column = 1, sticky=W)
 
 # user input for lineup setting
 lineupNumInput = Entry(top)
-lineupNumInput.grid(row=1, column=3, sticky=W)
+lineupNumInput.grid(row=1, column=2, sticky=W)
 lineupNumInput.bind('<Return>',(lambda event: enterPressed(lineupNumInput,lineups)))
 
 # number of player setting
 setting2 = Label(top, text='Number of Players: ')
 setting2.grid(row=2, sticky=W)
 displayPlayersNum = Label(top,textvariable=players)
-displayPlayersNum.grid(row=2,column = 2, sticky=W)
+displayPlayersNum.grid(row=2,column = 1, sticky=W)
 
 # user input max player setting
 playerNumInput = Entry(top)
-playerNumInput.grid(row=2, column=3,sticky=W)
+playerNumInput.grid(row=2, column=2,sticky=W)
 playerNumInput.bind('<Return>',(lambda event: enterPressed(playerNumInput,players)))
 
 # max spending cost setting
 setting3 = Label(top, text='Max Cost: ')
 setting3.grid(row=3, sticky=W)
 displayCostNum = Label(top,textvariable=maxCost)
-displayCostNum.grid(row=3,column = 2, sticky=W)
+displayCostNum.grid(row=3,column = 1, sticky=W)
 
 # user input for max spending cost setting
 costNumInput = Entry(top)
-costNumInput.grid(row=3, column=3,sticky=W)
+costNumInput.grid(row=3, column=2,sticky=W)
 costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost)))
 
 # max for specified category setting
 setting4 = Label(top, text='Max for specified category: ')
 setting4.grid(row = 4, sticky = W)
-setting4MaxNum = Label(top, text = '<')
-setting4MaxNum.grid(row = 4, column = 3, sticky = E)
+setting4MaxNum = Label(top, text = '>')
+setting4MaxNum.grid(row = 4, column = 3, sticky = W)
 
 # for test purposes can delete later
-displayPosAmount = Label(top, textvariable = numPos)
-displayPosAmount.grid(row = 4, column = 5, sticky = W)
+# displayPosAmount = Label(top, textvariable = numPos)
+# displayPosAmount.grid(row = 4, column = 5, sticky = W)
 
 # user input for max specified category
-numOfPosition = Entry(top)
-numOfPosition.grid(row = 4, column = 4, sticky = W)
-numOfPosition.bind('<Return>',(lambda event: enterPressed(numOfPosition, numPos)))
+maxCat = Entry(top)
+maxCat.grid(row = 4, column = 4, sticky = W)
+maxCat.bind('<Return>',(lambda event: enterPressed(maxCat, numPos)))
 
 #manually create a config.txt file
 createConfig = Button(top, text='Create Configuration File', command=makeConfigFile)
@@ -232,18 +231,18 @@ split.grid(row=18)
 #=============
 # Used to show the data after optimization
 bot = Frame(frame, width=settings.app.w, height=settings.app.h/2, background='white')
-bot.grid(row=19)
+# bot.grid(row=19)
 bot.grid_propagate(False) # Stop frame from resizing to widgets
 for i in range(19,36):
     bot.grid_rowconfigure(i, weight=1)
 
 bottom = Frame(bot, width=settings.app.w, height=settings.app.h/2, background='white')
-bottom.pack()
+# bottom.pack()
 bottom.pack_propagate(False)
 
 # addition of scollbar
 scrollbar = Scrollbar(bottom)
-scrollbar.pack(side=RIGHT, fill=Y)
+# scrollbar.pack(side=RIGHT, fill=Y)
 
 settings.app.root.mainloop()
 

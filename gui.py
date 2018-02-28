@@ -212,7 +212,7 @@ setting4MaxNum.grid(row = 4, column = 3, sticky = W)
 
 # user input for max specified category
 maxCat = Entry(top)
-maxCat.grid(row = 4, column = 4, sticky = W)
+maxCat.grid(row = 4, column = 2, sticky = W)
 maxCat.bind('<Return>',(lambda event: enterPressed(maxCat, numPos)))
 
 #manually create a config.txt file

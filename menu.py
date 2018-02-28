@@ -124,6 +124,10 @@ def Import():
 def Export():
 	if settings.app.imported == True:
 		print("Export File")
+		fileName = filedialog.asksaveasfilename(
+		defaultextension=".csv",
+		filetypes=[('CSV File (*.csv)', '*.csv'),('All Files (*.*)','*.*')],
+		title='Select file')
 	else:
 		messagebox.showinfo('Note', 'You must import a file before exporting!')
 

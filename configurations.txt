@@ -1,1 +1,7 @@
-
+1 0
+2 0
+3 Select Status
+4 0
+5 Select Status
+6 C:/Users/Ben/Dropbox/DFS-Optimizer/test/temp_input.csv
+7  Select status

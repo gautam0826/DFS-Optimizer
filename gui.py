@@ -58,12 +58,15 @@ def makeConfigFile():
 # saves variable when enter is pressed
 # only accepts numerical values for input
 def enterPressed(event,variable):
-        try:
-            float(event.get())
+    try:
+        float(event.get())
+        if (float(event.get()) > 99999999999999999999999999):
+            variable.set(99999999999999999999999999)
+        else:
             variable.set(event.get())
-            makeConfigFile()
-        except ValueError:
-            messagebox.showinfo('Error', 'Inputs must be a number!')
+        makeConfigFile()
+    except ValueError:
+        messagebox.showinfo('Error', 'Inputs must be a number!')
 
 # class to create drop down menus 
 # Usage: [name] = CreateDropMenu(root(in this case top), 
@@ -207,8 +210,8 @@ setting4MaxNum = Label(top, text = '>')
 setting4MaxNum.grid(row = 4, column = 3, sticky = W)
 
 # for test purposes can delete later
-# displayPosAmount = Label(top, textvariable = numPos)
-# displayPosAmount.grid(row = 4, column = 5, sticky = W)
+displayPosAmount = Label(top, textvariable = numPos)
+displayPosAmount.grid(row = 4, column = 1, sticky = W)
 
 # user input for max specified category
 maxCat = Entry(top)

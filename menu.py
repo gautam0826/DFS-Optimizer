@@ -128,6 +128,12 @@ def Export():
 		defaultextension=".csv",
 		filetypes=[('CSV File (*.csv)', '*.csv'),('All Files (*.*)','*.*')],
 		title='Select file')
+		# if (Path('temp_folder/temp_output.csv').is_file()):
+		# 	copyfile('temp_folder/temp_output', fileName)
+		# else:
+		# 	if not os.path.exists('temp_folder'):
+		# 		os.makedirs('temp_folder')
+		# 	file = open('temp_output.csv','w+')
 	else:
 		messagebox.showinfo('Note', 'You must import a file before exporting!')
 

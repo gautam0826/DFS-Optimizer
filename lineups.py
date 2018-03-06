@@ -3,6 +3,7 @@ import numpy as np
 import math
 import pulp
 from pulp import *
+import os
 
 # basic constraints/file locations
 # writing out to text file
@@ -27,6 +28,8 @@ for line in content:
 		inputCSVLocation = line[1]
 	elif line[0] is '7':
 		line2 = line[1].split(' ', 1)
+		if line2[0] == '':
+			line2[0] = 0
 		maxSameTeam = int(line2[0])
 		teamColumn = line2[1]
 

@@ -32,23 +32,27 @@ class DFS():
 	def __init__(self):
 		self.root = tk.Tk()
 
+		# maximize Application to Screen
+		self.w = self.root.winfo_screenwidth() // 1.5
+		self.h = self.root.winfo_screenheight()
+		#self.root.geometry("%dx%d+0+0" % (self.w, self.h))
+
 		# for running Windows
 		if os.name == 'nt':
 			# set root size to maximized screen size
-			self.root.wm_state('zoomed')
+			#self.root.wm_state('zoomed')
+			n = self.root.maxsize()
 		# for not running Windows
 		else:
 			# set root size to maximized screen size
 			m = self.root.maxsize()
 			self.root.geometry('{}x{}+0+0'.format(*m))
-
-		# maximize Application to Screen
-		self.w = self.root.winfo_screenwidth()
-		self.h = self.root.winfo_screenheight()
-		#self.root.geometry("%dx%d+0+0" % (self.w, self.h))
-
-		self.version = "QuickPick v3.0"
+			#self.root.geometry('{}x{}+0+0'.format(width, heigth))
+		
+		self.version = "QuickPick"
 		self.root.title(self.version)
+
+		self.root.iconbitmap(r'c:\Users\Joelle\Documents\CMPS 115\DFS-Optimizer\QP3232.ico')
 
 		self.buttons = []
 		self.settings = []
@@ -57,7 +61,7 @@ class DFS():
 		self.imported = False
 
 		# Disable Resize
-		self.root.resizable(False, True)
+		self.root.resizable(False, False)
 		
 # Run DFS and build GUI
 app=DFS()

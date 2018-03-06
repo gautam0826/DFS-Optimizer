@@ -29,6 +29,33 @@ numPos.set('0')
 
 #===========
 
+def loadPresetConfig():
+    fileName = ("presets/" + presetDropMenu.dropDownVar.get())
+    # If a file was selected, run load. Otherwise do nothing
+    if fileName != '':
+        copyfile(fileName, 'configurations.txt')
+        # Load values from configurations.txt into variables
+        with open('configurations.txt') as f:
+            content = f.readlines()
+        f.close()
+        content = [line.strip() for line in content]
+        for line in content:
+            line = line.split(' ', 1)
+            if line[0] is '1':
+                lineups.set(line[1])    # Variable 1
+            elif line[0] is '2':
+                players.set(line[1])    # Variable 2
+            elif line[0] is '3':
+                projections_column = line[1]
+            elif line[0] is '4':
+                maxCost.set(line[1])    # Variable 4
+            elif line[0] is '5':
+                budget_column = line[1]
+            elif line[0] is '6':
+                input_csv_location = line[1]
+            elif line[0] is '7':
+                numPos.set(line[1])        # Variable 7
+
 def makeConfigFile():
         csv_location = 'n/a'
         # needed to read if no file in the first place
@@ -221,6 +248,17 @@ maxCat.bind('<Return>',(lambda event: enterPressed(maxCat, numPos)))
 #manually create a config.txt file
 createConfig = Button(top, text='Create Configuration File', command=makeConfigFile)
 createConfig.grid(row=13, column=0, sticky = W)
+
+#Load Preset configuration from drop down menu
+presetLabel = Label(top, text='Presets: ')
+presetLabel.grid(row = 13, column = 12, sticky = W)
+presetDropMenu = CreateDropMenu(top, 'Select Status',settings.presetConfigList)
+presetDropMenu.grid(row = 13, column = 13, sticky = W)
+for file in [txt for txt in os.listdir("presets")
+if txt.endswith(".txt")]:
+    presetDropMenu.children['menu'].add_command(label=file,command=lambda heading=file: presetDropMenu.dropDownVar.set(heading))
+loadPreset = Button(top, text='Load Preset', command=loadPresetConfig)
+loadPreset.grid(row=13, column=14, sticky = W)
 
 #=============
 # Split Frame

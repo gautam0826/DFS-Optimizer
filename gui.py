@@ -244,7 +244,7 @@ bottom = Frame(bot, width=settings.app.w, height=settings.app.h/2, background='w
 bottom.pack_propagate(False)
 
 # addition of scollbar
-scrollbar = Scrollbar(bottom)
+# scrollbar = Scrollbar(bottom)
 # scrollbar.pack(side=RIGHT, fill=Y)
 
 settings.app.root.mainloop()

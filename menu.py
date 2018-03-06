@@ -197,7 +197,8 @@ def Optimize():
 		print('optimize')
 		gui.bot.grid(row=19)
 		gui.bottom.pack()
-		gui.scrollbar.pack(side=RIGHT, fill=Y)
+		scrollbar = Scrollbar(gui.bottom)
+		scrollbar.pack(side=RIGHT, fill=Y)
 		#Run the optomizer using Popen
 		subprocess.Popen('python lineups.py').wait()
 		#display the results from the csv file using labels in tkinter. currently not optimized. Need to set up for non-windows devices
@@ -219,12 +220,12 @@ def Optimize():
 			import pandas as pd
 			pandaInput = pd.read_csv("temp_folder/temp_output.csv")
 			displayColumn = pandaInput[gui.displayDropMenu.dropDownVar.get()]
-			label = tk.Label(gui.bottom, width = 10, height = 2, \
+			label = tk.Label(gui.bot, width = 10, height = 2, \
 							  text = gui.displayDropMenu.dropDownVar.get(), relief = tk.RIDGE)
 			label.grid(row = 0, column = 0)
 			x = 0
 			while x < displayColumn.__len__():
-				label = tk.Label(gui.bottom, width = 10, height = 2, \
+				label = tk.Label(gui.bot, width = 10, height = 2, \
 							  text = displayColumn[x], relief = tk.RIDGE)
 				x +=1
 				label.grid(row = x, column = 0)

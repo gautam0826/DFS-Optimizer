@@ -22,6 +22,7 @@ headerList = []
 capHeaderList = []
 budgetHeaderList = []
 projectionsHeaderList = []
+presetConfigList = []
 
 def init():
 	global app

@@ -197,7 +197,8 @@ def Optimize():
 		print('optimize')
 		gui.bot.grid(row=19)
 		gui.bottom.pack()
-		gui.scrollbar.pack(side=RIGHT, fill=Y)
+		scrollbar = Scrollbar(gui.bottom)
+		scrollbar.pack(side=RIGHT, fill=Y)
 		#Run the optomizer using Popen
 		subprocess.Popen('python lineups.py').wait()
 		#display the results from the csv file using labels in tkinter. currently not optimized. Need to set up for non-windows devices

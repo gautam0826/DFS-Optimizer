@@ -88,7 +88,7 @@ def enterPressed(event,variable):
         try:
             float(event.get())
             variable.set(event.get())
-            makeConfigFile()
+            #makeConfigFile()
         except ValueError:
             messagebox.showinfo('Error', 'Inputs must be a number!')
 

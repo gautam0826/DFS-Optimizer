@@ -7,12 +7,14 @@ if sys.version_info >= (3,0):
 	from tkinter import *
 	from tkinter import messagebox
 	from tkinter import filedialog
+	from pathlib import Path
 # for running Python 2.X
 else:
 	import Tkinter as tk
 	from Tkinter import *
 	import tkMessageBox
 	from Tkinter import tkFileDialog
+	from pathlib2 import Path
 from shutil import copyfile
 import webbrowser
 import settings
@@ -128,12 +130,13 @@ def Export():
 		defaultextension=".csv",
 		filetypes=[('CSV File (*.csv)', '*.csv'),('All Files (*.*)','*.*')],
 		title='Select file')
-		# if (Path('temp_folder/temp_output.csv').is_file()):
-		# 	copyfile('temp_folder/temp_output', fileName)
-		# else:
-		# 	if not os.path.exists('temp_folder'):
-		# 		os.makedirs('temp_folder')
-		# 	file = open('temp_output.csv','w+')
+		filePath = Path(os.path.join('temp_folder', 'temp_output.csv'))
+                if (filePath.is_file()):
+                        copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
+                #else:
+                #        if not os.path.exists('temp_folder'):
+                #                os.makedirs('temp_folder')
+                #        file = open('temp_output.csv','w+')
 	else:
 		messagebox.showinfo('Note', 'You must import a file before exporting!')
 

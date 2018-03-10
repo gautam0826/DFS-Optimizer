@@ -124,21 +124,22 @@ def Import():
 
 # after information optimized it will be written to a csv file		
 def Export():
-	if settings.app.imported == True:
-		print("Export File")
-		fileName = filedialog.asksaveasfilename(
-		defaultextension=".csv",
-		filetypes=[('CSV File (*.csv)', '*.csv'),('All Files (*.*)','*.*')],
-		title='Select file')
-		filePath = Path(os.path.join('temp_folder', 'temp_output.csv'))
-                if (filePath.is_file()):
-                        copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
-                #else:
-                #        if not os.path.exists('temp_folder'):
-                #                os.makedirs('temp_folder')
-                #        file = open('temp_output.csv','w+')
-	else:
-		messagebox.showinfo('Note', 'You must import a file before exporting!')
+    if settings.app.imported == True:
+        print("Export File")
+        fileName = filedialog.asksaveasfilename(
+        defaultextension=".csv",
+        filetypes=[('CSV File (*.csv)', '*.csv'),('All Files (*.*)','*.*')],
+        title='Select file')
+        filePath = Path(os.path.join('temp_folder', 'temp_output.csv'))
+        if (filePath.is_file()):
+            copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
+        # else:
+        #     if not os.path.exists('temp_folder'):
+        #        os.makedirs('temp_folder')
+        #     file = open('temp_output.csv','w+')
+        #     copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
+    else:
+        messagebox.showinfo('Note', 'You must import a file before exporting!')
 
 #=======================
 # help menu dropdown 

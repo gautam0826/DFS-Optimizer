@@ -52,7 +52,7 @@ class DFS():
 		self.version = "QuickPick"
 		self.root.title(self.version)
 
-		self.root.iconbitmap(r'QP3232.ico')
+		self.root.iconbitmap(r'qp32.ico')
 
 		self.buttons = []
 		self.settings = []

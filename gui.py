@@ -87,8 +87,11 @@ def makeConfigFile():
 def enterPressed(event,variable):
         try:
             float(event.get())
-            variable.set(event.get())
-            #makeConfigFile()
+            if (float(event.get()) > 99999999999999999999999999):
+                variable.set(99999999999999999999999999)
+            else:
+                variable.set(event.get())
+            makeConfigFile()
         except ValueError:
             messagebox.showinfo('Error', 'Inputs must be a number!')
 

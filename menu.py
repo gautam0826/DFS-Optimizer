@@ -110,10 +110,6 @@ def Import():
 			headers = next(headings)
 		settings.headerList.append('Select One')
 		settings.capHeaderList.append('Select One')
-		gui.displayDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.displayDropMenu.dropDownVar.set(heading))
-		gui.capDropDown.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.capDropDown.dropDownVar.set(heading))
-		gui.budgetDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.budgetDropMenu.dropDownVar.set(heading))
-		gui.projectionsDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.projectionsDropMenu.dropDownVar.set(heading))
 		for h in headers: #adds headers into drop down menu
 			settings.headerList.append(h)
 			settings.capHeaderList.append(h)

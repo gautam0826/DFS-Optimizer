@@ -1,7 +1,7 @@
-1 5
-2 5
-3 Select Status
-4 5
-5 Select Status
-6 C:/Users/Joey Desktop/Downloads/temp_input.csv
-7 5 Select Status
+1 10
+2 10
+3 player name
+4 10
+5 player name
+6 test/temp_input.csv
+7 10 player name

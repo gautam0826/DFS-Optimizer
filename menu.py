@@ -16,6 +16,7 @@ else:
 	from Tkinter import tkFileDialog
 	from pathlib2 import Path
 from shutil import copyfile
+import shutil
 import webbrowser
 import settings
 import settings
@@ -188,6 +189,8 @@ def Add():
 
 # after adding file, have the information optimized and printed out
 def Optimize():
+	if os.path.exists('temp_folder'):
+		shutil.rmtree('temp_folder')
 	# print(gui.lineups.get()) example on how to use global variable
 	if settings.app.imported == True:
 		print('optimize')

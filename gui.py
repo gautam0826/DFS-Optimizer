@@ -178,7 +178,7 @@ projectionsLabel.grid(row = 13, column = 0,sticky = W)
 projectionsDropMenu = CreateDropMenu(top, 'Select Status',settings.projectionsHeaderList)
 projectionsDropMenu.grid(row = 13, column = 1, sticky = W)
 # setting 4 drop down
-capDropDown = CreateDropMenu(top, 'Select Status', settings.capHeaderList) #list of headers from imported file
+capDropDown = CreateDropMenu(top, 'In Category', settings.capHeaderList) #list of headers from imported file
 capDropDown.grid(row = 6, column = 4, rowspan=3, columnspan=3, sticky=N)   
 
 # =============
@@ -236,7 +236,7 @@ costNumInput.bind('<Return>',(lambda event: enterPressed(costNumInput,maxCost)))
 # max for specified category setting
 setting4 = Label(top, text='Max for specified category: ', bg="#212121", fg='#FFFFFF')
 setting4.grid(row = 6, sticky = W)
-setting4MaxNum = Label(top, text = '>', bg="#212121", fg='#FFFFFF')
+setting4MaxNum = Label(top, text = '>=', bg="#212121", fg='#FFFFFF')
 setting4MaxNum.grid(row = 6, column = 3, sticky = W)
 
 # for test purposes can delete later
@@ -263,6 +263,19 @@ if txt.endswith(".txt")]:
     presetDropMenu.children['menu'].add_command(label=file,command=lambda heading=file: presetDropMenu.dropDownVar.set(heading))
 loadPreset = Button(top, text='Load Presets', command=loadPresetConfig, background="SteelBlue1")
 loadPreset.grid(row=0, column=2, sticky = E)
+
+#QuickStart Guide
+title = Label(top, text='Quick Start Guide', bg='#212121', fg='#FFFFFF')
+title.grid(row = 3, column = 17, columnspan = 4)
+stepOne = Label(top, text='1. Input desired settings and press enter.', bg='#212121', fg='#FFFFFF')
+stepOne.grid(row = 4, column = 17, columnspan=4)
+stepTwo = Label(top, text='2. Make a selection for each dropdown.', bg='#212121', fg='#FFFFFF')
+stepTwo.grid(row = 5, column = 17, columnspan=4)
+stepThree = Label(top, text='3. Click "Stage Changes"', bg='#212121', fg='#FFFFFF')
+stepThree.grid(row = 6, column = 17, columnspan=4)
+stepFour = Label(top, text='4. Click "Optimize"', bg='#212121', fg='#FFFFFF')
+stepFour.grid(row = 7, column = 17, columnspan=4)
+
 
 #=============
 # Split Frame

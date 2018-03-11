@@ -32,7 +32,16 @@ for line in content:
 			line2[0] = 0
 		maxSameTeam = int(line2[0])
 		teamColumn = line2[1]
+#numLineups = gui.lineups.get()
+#numPlayers = gui.players.get()
+#budget = gui.maxCost.get()
+#maxSameTeam = gui.numPos.get()
 
+#projectionsColumn = settings.projectionsHeaderList[0]
+#budgetColumn = settings.budgetHeaderList[0]
+#teamColumn = 
+#inputCSVLocation = 
+		
 # creates a temp folder in the same directory
 currentDirectory = os.getcwd()
 finalDirectory = os.path.join(currentDirectory, r'temp_folder')
@@ -94,7 +103,7 @@ for i in range(1, numLineups+1):
 			newConstraint +=  variable
 
 	prob += (newConstraint <= numPlayers - 1) #using <= and subtracting 1 since it throws an error if < is used
-	print('optimized lineup no. ' + str(i))
+	#print('optimized lineup no. ' + str(i))
 
 # change lineup exposure from number of lineups appeared in to ratio of lineups included in to number of lineups
 df['lineup exposure'] /= numLineups

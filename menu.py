@@ -7,12 +7,14 @@ if sys.version_info >= (3,0):
 	from tkinter import *
 	from tkinter import messagebox
 	from tkinter import filedialog
+	from pathlib import Path
 # for running Python 2.X
 else:
 	import Tkinter as tk
 	from Tkinter import *
 	import tkMessageBox
 	from Tkinter import tkFileDialog
+	from pathlib2 import Path
 from shutil import copyfile
 import webbrowser
 import settings
@@ -72,10 +74,6 @@ def Load():
 				numPos = line[1]
 				gui.numPos.set(numPos)		# Variable 7
 
-# not currently needed, but available
-def Options():
-	print("Options")
-
 #==================
 # CSV drop down 
 #==================
@@ -108,10 +106,6 @@ def Import():
 			headers = next(headings)
 		settings.headerList.append('Select One')
 		settings.capHeaderList.append('Select One')
-		gui.displayDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.displayDropMenu.dropDownVar.set(heading))
-		gui.capDropDown.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.capDropDown.dropDownVar.set(heading))
-		gui.budgetDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.budgetDropMenu.dropDownVar.set(heading))
-		gui.projectionsDropMenu.children['menu'].add_command(label='Select One',command=lambda heading='Select One': gui.projectionsDropMenu.dropDownVar.set(heading))
 		for h in headers: #adds headers into drop down menu
 			settings.headerList.append(h)
 			settings.capHeaderList.append(h)
@@ -122,20 +116,22 @@ def Import():
 
 # after information optimized it will be written to a csv file		
 def Export():
-	if settings.app.imported == True:
-		print("Export File")
-		fileName = filedialog.asksaveasfilename(
-		defaultextension=".csv",
-		filetypes=[('CSV File (*.csv)', '*.csv'),('All Files (*.*)','*.*')],
-		title='Select file')
-		# if (Path('temp_folder/temp_output.csv').is_file()):
-		# 	copyfile('temp_folder/temp_output', fileName)
-		# else:
-		# 	if not os.path.exists('temp_folder'):
-		# 		os.makedirs('temp_folder')
-		# 	file = open('temp_output.csv','w+')
-	else:
-		messagebox.showinfo('Note', 'You must import a file before exporting!')
+    if settings.app.imported == True:
+        print("Export File")
+        fileName = filedialog.asksaveasfilename(
+        defaultextension=".csv",
+        filetypes=[('CSV File (*.csv)', '*.csv'),('All Files (*.*)','*.*')],
+        title='Select file')
+        filePath = Path(os.path.join('temp_folder', 'temp_output.csv'))
+        if (filePath.is_file()):
+            copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
+        # else:
+        #     if not os.path.exists('temp_folder'):
+        #        os.makedirs('temp_folder')
+        #     file = open('temp_output.csv','w+')
+        #     copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
+    else:
+        messagebox.showinfo('Note', 'You must import a file before exporting!')
 
 #=======================
 # help menu dropdown 

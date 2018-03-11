@@ -1,7 +1,7 @@
 1 5
 2 5
-3 Select Status
+3 cost
 4 5
-5 Select Status
-6 C:/Users/Joey Desktop/Downloads/temp_input.csv
-7 5 Select Status
+5 cost
+6 test/temp_input.csv
+7 5 cost

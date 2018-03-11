@@ -126,11 +126,6 @@ def Export():
         filePath = Path(os.path.join('temp_folder', 'temp_output.csv'))
         if (filePath.is_file()):
             copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
-        # else:
-        #     if not os.path.exists('temp_folder'):
-        #        os.makedirs('temp_folder')
-        #     file = open('temp_output.csv','w+')
-        #     copyfile(os.path.join('temp_folder', 'temp_output.csv'), fileName)
     else:
         messagebox.showinfo('Note', 'You must import a file before exporting!')
 

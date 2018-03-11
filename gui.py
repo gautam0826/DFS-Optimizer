@@ -119,7 +119,6 @@ filemenu = Menu(menu, tearoff=False)
 menu.add_cascade(label="File", menu=filemenu)
 filemenu.add_command(label="Save Settings", command=Save)
 filemenu.add_command(label="Load Settings", command=Load)
-filemenu.add_command(label="Options", command=Options)
 filemenu.add_separator()
 filemenu.add_command(label="Exit", command=settings.app.root.destroy)
 

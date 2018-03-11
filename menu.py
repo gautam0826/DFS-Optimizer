@@ -74,10 +74,6 @@ def Load():
 				numPos = line[1]
 				gui.numPos.set(numPos)		# Variable 7
 
-# not currently needed, but available
-def Options():
-	print("Options")
-
 #==================
 # CSV drop down 
 #==================

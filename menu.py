@@ -191,8 +191,8 @@ def Optimize():
 		print('optimize')
 		gui.bot.grid(row=19)
 		gui.bottom.pack()
-		scrollbar = Scrollbar(gui.bottom)
-		scrollbar.pack(side=RIGHT, fill=Y)
+		#scrollbar = Scrollbar(gui.bottom)
+		#scrollbar.pack(side=RIGHT, fill=Y)
 		# run the optomizer using Popen
 		subprocess.Popen('python lineups.py').wait()
 		import pandas as pd

@@ -140,7 +140,7 @@ frame.pack_propagate(False) # Stop frame from resizing to widgets
 top = Frame(frame, width=settings.app.w, height=settings.app.h/2.2, background='white')
 top.grid(row=0)
 top.grid_propagate(False) # Stop frame from resizing to widgets
-top.configure(background = '#212121') # controls back ground for top window---------------------------------------------------------------
+top.configure(background = '#212121') # controls back ground for top window
 
 for i in range(0,17):
     top.grid_rowconfigure(i, weight=1)
@@ -155,8 +155,7 @@ displayLabel = Label(top, text='Display Column : ', bg="#212121", fg='#FFFFFF')
 displayLabel.grid(row = 11, column = 0, sticky = W)
 displayDropMenu = CreateDropMenu(top, 'Select Status', settings.headerList) #list of headers from imported file
 displayDropMenu.grid(row = 11, column = 1, sticky = W)
-#selectedDisplay = displayDropMenu.dropDownVar.get() #gets selected
-#chosenIndex = displayDropMenu.dropDownVar.trace('w',selectedOption(displayDropMenu,settings.headerList))
+
 
 
 # budget drop down
@@ -288,9 +287,6 @@ for i in range(19,36):
 bottom = Frame(bot, width=settings.app.w, height=settings.app.h/2.5, background='white')
 bottom.pack_propagate(False)
 
-# addition of scollbar
-# scrollbar = Scrollbar(bottom)
-# scrollbar.pack(side=RIGHT, fill=Y)
 
 settings.app.root.mainloop()
 

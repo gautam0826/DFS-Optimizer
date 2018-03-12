@@ -32,15 +32,7 @@ for line in content:
 			line2[0] = 0
 		maxSameTeam = int(line2[0])
 		teamColumn = line2[1]
-#numLineups = gui.lineups.get()
-#numPlayers = gui.players.get()
-#budget = gui.maxCost.get()
-#maxSameTeam = gui.numPos.get()
 
-#projectionsColumn = settings.projectionsHeaderList[0]
-#budgetColumn = settings.budgetHeaderList[0]
-#teamColumn = 
-#inputCSVLocation = 
 		
 # creates a temp folder in the same directory
 currentDirectory = os.getcwd()

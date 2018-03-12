@@ -129,6 +129,7 @@ helpmenu = Menu(menu, tearoff=False)
 menu.add_cascade(label="Help", menu=helpmenu)
 helpmenu.add_command(label="GitHub", command=GitHub)
 helpmenu.add_command(label="About", command=About)
+helpmenu.add_command(label="QuickPick Help", command=QuickPickHelp)
 
 frame = Frame(settings.app.root, width=settings.app.w, height=settings.app.h, background='white')
 frame.pack(fill=BOTH)

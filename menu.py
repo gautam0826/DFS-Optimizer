@@ -167,6 +167,65 @@ def About():
 	
 	about.mainloop()
 
+def QuickPickHelp():
+    #locates it in the menu bar up top
+    about = Toplevel()
+
+    about.protocol("WM_DELETE_WINDOW", about.destroy)
+
+    frame = Frame(about, width=500, height=300)
+    frame.pack()
+    frame.pack_propagate(False)
+    
+    titleName = StringVar()
+    titleText = Label(frame, textvariable=titleName,font='Helvetica 18')
+    titleName.set("Welcome to Quick Pick Help Center.\n")
+    titleText.grid(column =0, row = 1)
+  
+    getGeneralTitle = Label(frame, text='General Questions', font='Helvetica 16 bold')
+    getGeneralTitle.grid(column = 0, row = 2, sticky = W)
+
+    # Question 1
+    generalQuestionOne =  Label(frame, text='Why can’t I click the optimize button?', font='Helvetica 14 italic')
+    generalQuestionOne.grid(column = 0, row = 3, sticky = W)
+    generalAnswerOne =  Label(frame, text='    You must first stage your settings before the optimizer can your input ' +
+    	'file.', font='Helvetica 14')
+    generalAnswerOne.grid(column = 0, row = 4, sticky = W)
+    # Question 2
+    generalQuestionTwo =  Label(frame, text='How do I save my configurations for later use', font='Helvetica 14 italic')
+    generalQuestionTwo.grid(column = 0, row = 5, sticky = W)
+    generalAnswerTwo =  Label(frame, text='    You can use the ‘Save settings’ button which saves your settings as a text ' +
+    	'file. You can use the ‘Load settings’ button and find your text file', font='Helvetica 14')
+    generalAnswerTwo.grid(column = 0, row = 6, sticky = W)
+    # Question 3
+    generalQuestionThree =  Label(frame, text='Why can’t I type in my settings?', font='Helvetica 14 italic')
+    generalQuestionThree.grid(column = 0, row = 7, sticky = W)
+    generalAnswerThree =  Label(frame, text='    You must import your csv first before you can touch the settings, as ' +
+    	'that’ll help us show you what columns to pick and choose.', font='Helvetica 14')
+    generalAnswerThree.grid(column = 0, row = 8, sticky = W)
+    # Question 4
+    generalQuestionFour =  Label(frame, text='What about a setting for _____?', font='Helvetica 14 italic')
+    generalQuestionFour.grid(column = 0, row = 9, sticky = W)
+    generalAnswerFour =  Label(frame, text='    This project was developed in under 10 weeks by six UC Santa Cruz ' +
+    	'students; our team didn’t have enough time to completely implement our \n vision for the functionality ' +
+    	'of our product, but the framework is there to build and improve the product.', font='Helvetica 14')
+    generalAnswerFour.grid(column = 0, row = 10, sticky = W)
+    # Question 5
+    generalQuestionFive =  Label(frame, text='Does my csv file need to be in the same directory as the program or on' +
+    ' the Desktop?', font='Helvetica 14 italic')
+    generalQuestionFive.grid(column = 0, row = 11, sticky = W)
+    generalAnswerFive =  Label(frame, text='    No, anywhere is fine.', font='Helvetica 14')
+    generalAnswerFive.grid(column = 0, row = 12, sticky = W)
+    # Question 6
+    generalQuestionSix =  Label(frame, text='Can it read TSV or .xlsx files?', font='Helvetica 14 italic')
+    generalQuestionSix.grid(column = 0, row = 13, sticky = W)
+    generalAnswerSix =  Label(frame, text='    Sorry, we can’t read anything other than a csv file. However, ' +
+    	'there are converters online for tsv and xlsx files.', font='Helvetica 14')
+    generalAnswerSix.grid(column = 0, row = 14, sticky = W)
+
+   
+    about.mainloop()
+
 #===================
 #   GUI Functions
 #===================

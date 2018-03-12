@@ -45,16 +45,8 @@ def loadPresetConfig():
                 lineups.set(line[1])    # Variable 1
             elif line[0] is '2':
                 players.set(line[1])    # Variable 2
-            elif line[0] is '3':
-                projections_column = line[1]
             elif line[0] is '4':
                 maxCost.set(line[1])    # Variable 4
-            elif line[0] is '5':
-                budget_column = line[1]
-            elif line[0] is '6':
-                input_csv_location = line[1]
-            elif line[0] is '7':
-                numPos.set(line[1])        # Variable 7
 
 def makeConfigFile():
         csv_location = 'n/a'

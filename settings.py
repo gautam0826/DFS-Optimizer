@@ -42,7 +42,6 @@ class DFS():
 			# set root size to maximized screen size
 			m = self.root.maxsize()
 			self.root.geometry('{}x{}+0+0'.format(*m))
-			#self.root.geometry('{}x{}+0+0'.format(width, heigth))
 		
 		self.version = "QuickPick"
 		self.root.title(self.version)

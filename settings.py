@@ -38,12 +38,7 @@ class DFS():
 		#self.root.geometry("%dx%d+0+0" % (self.w, self.h))
 
 		# for running Windows
-		if os.name == 'nt':
-			# set root size to maximized screen size
-			#self.root.wm_state('zoomed')
-			n = self.root.maxsize()
-		# for not running Windows
-		else:
+		if os.name != 'nt':
 			# set root size to maximized screen size
 			m = self.root.maxsize()
 			self.root.geometry('{}x{}+0+0'.format(*m))

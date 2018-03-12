@@ -6,6 +6,13 @@ python main.py
 ```
 The user can import a CSV lineup file, optimize the file based off the various user settings and export it into a new CSV file. The user can also save and load the user settings for future use.
 
+## Quick Start Guide
+* Import your CSV file that will be optimized
+* Input your desired variables ***Note:*** *Depending on the quality of your computer, entering numbers greater than 15 will take drastically longer. If the program freezes, give it some time to finish processing.*
+* Make a selection for each dropdown
+* Click "Stage Changes"
+* Click "Optimize"
+
 ## Story Board
 * [Sprint 1](https://trello.com/b/2JB76hIR)
 * [Sprint 2](https://trello.com/b/j7SUstHl)

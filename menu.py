@@ -193,36 +193,39 @@ def Optimize():
 		gui.bottom.pack()
 		scrollbar = Scrollbar(gui.bottom)
 		scrollbar.pack(side=RIGHT, fill=Y)
-		#Run the optomizer using Popen
+		# run the optomizer using Popen
 		subprocess.Popen('python lineups.py').wait()
-		#display the results from the csv file using labels in tkinter. currently not optimized. Need to set up for non-windows devices
-		#if no option is selected, display all items
-		if gui.displayDropMenu.dropDownVar.get() == 'Select One' or gui.displayDropMenu.dropDownVar.get() == 'Select Status':
-			with open("temp_folder/temp_output.csv", newline = "") as file:
-				reader = csv.reader(file)
-				r = 0
-				for col in reader:
-					c = 0
-					for row in col:
-						label = tk.Label(gui.bot, width = 10, height = 2, \
-										  text = row, relief = tk.RIDGE)
-						label.grid(row = r, column = c)
-						c += 1
-					r += 1
-		#otherwise, just display the selected column (right now uses budgetDropMenu)
-		else:
-			import pandas as pd
-			pandaInput = pd.read_csv("temp_folder/temp_output.csv")
+		import pandas as pd
+		pandaInput = pd.read_csv("temp_folder/temp_output.csv")
+		# display the results from the csv file using labels in tkinter. currently not optimized. Need to set up for non-windows devices
+		# if an option is selected, display that first
+		if gui.displayDropMenu.dropDownVar.get() != 'Select One' and gui.displayDropMenu.dropDownVar.get() != 'Select Status':
 			displayColumn = pandaInput[gui.displayDropMenu.dropDownVar.get()]
-			label = tk.Label(gui.bot, width = 10, height = 2, \
-							  text = gui.displayDropMenu.dropDownVar.get(), relief = tk.RIDGE)
+			label = tk.Label(gui.bot, width = 20, height = 2, \
+						text = gui.displayDropMenu.dropDownVar.get(), relief = tk.RIDGE)
 			label.grid(row = 0, column = 0)
 			x = 0
 			while x < displayColumn.__len__():
-				label = tk.Label(gui.bot, width = 10, height = 2, \
-							  text = displayColumn[x], relief = tk.RIDGE)
+				label = tk.Label(gui.bot, width = 20, height = 2, \
+							text = displayColumn[x], relief = tk.RIDGE)
 				x +=1
 				label.grid(row = x, column = 0)
 				
+		# by default, display all columns with 'lineup_' in them
+		playerColumns = [col for col in pandaInput.columns if 'lineup_' in col]
+		x = 0
+		y = 1
+		for col in playerColumns:
+			displayColumn = pandaInput[col]
+			label = tk.Label(gui.bot, width = 10, height = 2, \
+						  text = col, relief = tk.RIDGE)
+			label.grid(row = 0, column = y)
+			while x < displayColumn.__len__():
+				label = tk.Label(gui.bot, width = 10, height = 2, \
+						  text = displayColumn[x], relief = tk.RIDGE)
+				x +=1
+				label.grid(row = x, column = y)
+			x = 0
+			y +=1
 	else:
 		messagebox.showinfo('Note', 'You must import a file before optimizing a lineup!')

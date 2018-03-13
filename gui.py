@@ -47,7 +47,7 @@ def loadPresetConfig():
                 players.set(line[1])    # Variable 2
             elif line[0] is '4':
                 maxCost.set(line[1])    # Variable 4
-	    elif line[o] is '7':
+	    elif line[0] is '7':
 		maxCat.set(line[1])     # Variable 7
 
 def makeConfigFile():
